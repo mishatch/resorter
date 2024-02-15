@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-
-/* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+@font-face {
+    font-family: 'Arial Geo';
+    src: url('./assets/fonts/arial_geo.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+.geo-primary-txt {
+    font-family: "Arial Geo", Arial, sans-serif;
+}
+

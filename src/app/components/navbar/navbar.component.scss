@@ -1,3 +1,5 @@
+@import "../../../palette";
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -38,16 +40,34 @@
   .navbar-links {
     display: flex;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-
-    a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      transition: color 0.3s ease;
-    }
+    align-items: center;
+    list-style: none;
+    margin-bottom: 0;
+   >li {
+     display: flex;
+     a {
+       color: $nav-txt-color;
+       text-decoration: none;
+       margin-left: 20px;
+       transition: color 0.3s ease;
+       font-size: 15px;
+       &:hover {
+         color: $primary-color;
+       }
+     }
+     &:last-of-type {
+         margin-left: 30px;
+       .lang-btn {
+         color: $nav-txt-color;
+         &:hover {
+           color: $primary-color;
+         }
+       }
+     }
+   }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .navbar-toggler {
       display: block;
     }
@@ -56,6 +76,8 @@
       opacity: 0;
       visibility: hidden;
       flex-direction: column;
+      gap: 15px;
+      align-items: self-start;
       position: absolute;
       top: 100%;
       left: 0;
@@ -68,8 +90,13 @@
         visibility: visible;
       }
 
-      a {
-        margin: 10px 0;
+      >li{
+        >a {
+          margin-left: 0;
+        }
+        &:last-of-type {
+          margin-left: 0;
+        }
       }
     }
   }

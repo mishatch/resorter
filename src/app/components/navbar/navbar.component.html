@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="navbar-brand">
     <a href="#">
-        <img src="./assets/logo.png" alt="Logo" />
+      <img src="./assets/logo.png" alt="Logo" />
     </a>
   </div>
   <button class="navbar-toggler" (click)="toggleNavbar()">
@@ -9,10 +9,43 @@
     <span></span>
     <span></span>
   </button>
-  <div class="navbar-links" [ngClass]="{ 'open': isNavbarOpen }">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
-  </div>
+  <ul class="navbar-links" [ngClass]="{ 'open': isNavbarOpen }">
+    <li>
+      <a href="#" class="geo-primary-txt">მთავარი</a>
+    </li>
+    <li>
+      <a href="#" class="geo-primary-txt">სასტუმროები</a>
+    </li>
+    <li>
+      <a href="#" class="geo-primary-txt">მანქანები</a>
+    </li>
+    <li>
+      <a href="#" class="geo-primary-txt">ბლოგები</a>
+    </li>
+    <li>
+      <a href="#" class="geo-primary-txt">ჩვენს შესახებ</a>
+    </li>
+    <li>
+      <a href="#" class="geo-primary-txt">წესები და პირობები</a>
+    </li>
+    <li>
+      <a href="#" class="geo-primary-txt">კონტაქტი</a>
+    </li>
+    <li>
+      <div class="language-changer row">
+        <div class="col">
+          <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn lang-btn" id="dropdownBasic1" ngbDropdownToggle>
+              GEO
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem>GEO</button>
+              <button ngbDropdownItem>EN</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </li>
+  </ul>
 </nav>
