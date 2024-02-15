@@ -1,0 +1,50 @@
+@import "../../../../palette";
+.wrapper{
+  width: 100%;
+  .services-card {
+    transition: margin-top 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 310px;
+    border-radius: 24px;
+    background-color: $card-bg;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-bottom: 30px;
+    > .top-layer {
+      display: flex;
+      justify-content: flex-start;
+      padding: 20px;
+      position: relative;
+      > .service-name {
+        h4.main-font {
+          font-size: 15px;
+          color: $txt-dark;
+        }
+      }
+      > .service-logo {
+        background-color: $primary-light;
+        position: absolute;
+        right: -38px;
+        top: -38px;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: flex-end;
+        padding: 15px;
+        border-radius: 50%;
+        svg {
+          width: 40px;
+        }
+      }
+    }
+    > .services-card-content {
+      padding: 20px 20px 20px 20px;
+    }
+    &:hover {
+      margin-top: -10px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<h1 class="geo-primary-txt">
+    სერვისები
+</h1>
+<div class="wrapper" id="wrapper">
+
+    @for(service of services; track service.name){
+    <app-service-card
+    [serviceName]="service.name"
+    [serviceContent]="service.content"
+>
+</app-service-card>
+    }
+</div>

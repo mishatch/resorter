@@ -4,13 +4,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: $nav-bg;
   padding: 10px 20px;
-  color: white;
+  color: $primary-light;
 
   .navbar-brand {
     a {
-      color: white;
+      color: $primary-light;
       text-decoration: none;
       font-weight: bold;
       display: block;
@@ -32,7 +32,7 @@
       display: block;
       width: 25px;
       height: 3px;
-      background-color: white;
+      background-color: $primary-light;
       margin: 5px 0;
     }
   }
@@ -52,7 +52,7 @@
        transition: color 0.3s ease;
        font-size: 15px;
        &:hover {
-         color: $primary-color;
+         color: $primary-light;
        }
      }
      &:last-of-type {
@@ -60,7 +60,7 @@
        .lang-btn {
          color: $nav-txt-color;
          &:hover {
-           color: $primary-color;
+           color: $primary-light;
          }
        }
      }
@@ -82,7 +82,7 @@
       top: 100%;
       left: 0;
       width: 100%;
-      background-color: #333;
+      background-color: $nav-bg;
       padding: 10px 20px;
       z-index: 10;
       &.open {
@@ -100,4 +100,8 @@
       }
     }
   }
+}
+#dropdown {
+  width: 76px;
+  min-width: 0;
 }
