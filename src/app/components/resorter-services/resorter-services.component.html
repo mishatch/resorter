@@ -3,11 +3,13 @@
 </h1>
 <div class="wrapper" id="wrapper">
 
-    @for(service of services; track service.name){
+    @for(service of resorterServices; track service.name){
     <app-service-card
     [serviceName]="service.name"
     [serviceContent]="service.content"
+    [serviceIcon]="service.svg"
 >
 </app-service-card>
     }
+
 </div>
