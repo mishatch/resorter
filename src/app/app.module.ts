@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ResorterServicesComponent } from './components/resorter-services/resorter-services.component';
 import { ServiceCardComponent } from './components/resorter-services/service-card/service-card.component';
 import {HttpClientModule} from "@angular/common/http";
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {HttpClientModule} from "@angular/common/http";
     HeaderComponent,
     ResorterServicesComponent,
     ServiceCardComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
