@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="navbar-brand">
     <a href="#">
-      <img src="./assets/logo.png" alt="Logo" />
+      <img src="../../../../assets/logo.png" alt="Logo" />
     </a>
   </div>
   <button class="navbar-toggler" (click)="toggleNavbar()">
@@ -11,13 +11,13 @@
   </button>
   <ul class="navbar-links" [ngClass]="{ 'open': isNavbarOpen }">
     <li>
-      <a href="#" class="geo-primary-txt">მთავარი</a>
+      <a routerLink="/" class="geo-primary-txt">მთავარი</a>
     </li>
     <li>
-      <a href="#" class="geo-primary-txt">სასტუმროები</a>
+      <a routerLink="/hotels" class="geo-primary-txt">სასტუმროები</a>
     </li>
     <li>
-      <a href="#" class="geo-primary-txt">მანქანები</a>
+      <a routerLink="/car-rental" class="geo-primary-txt">მანქანები</a>
     </li>
     <li>
       <a href="#" class="geo-primary-txt">ბლოგები</a>
@@ -29,7 +29,7 @@
       <a href="#" class="geo-primary-txt">წესები და პირობები</a>
     </li>
     <li>
-      <a href="#" class="geo-primary-txt">კონტაქტი</a>
+      <a href="#contact" class="geo-primary-txt">კონტაქტი</a>
     </li>
     <li>
       <div class="language-changer row">

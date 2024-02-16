@@ -1,0 +1,20 @@
+@import "../../../palette";
+
+.wrapper {
+  height: 40%;
+  max-height: 380px;
+  position: relative;
+  >img {
+    width: 100%;
+    object-fit: cover;
+    max-height: 380px;
+  }
+  >h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $primary-light;
+    text-align: center;
+  }
+}

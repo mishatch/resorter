@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResorterServicesService } from "../../services/resorter-services.service";
+import { ResorterServicesService } from "../../../modules/core/services/resorter-services.service";
 
 @Component({
     selector: 'app-resorter-services',
