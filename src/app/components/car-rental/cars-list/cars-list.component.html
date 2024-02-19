@@ -1,0 +1,11 @@
+<app-filter></app-filter>
+<div class="wrapper">
+    @for(car of cars; track car.name){
+    <app-car-card
+    [image]="car.image.images[1]"
+    [name]="car.brand"
+    [price]="car.price"
+    >
+    </app-car-card>
+    }
+</div>

@@ -1,0 +1,27 @@
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{'data:image/jpg;base64,' + image}}" [alt]="name">
+    <div class="card-body">
+        <h5 class="card-title">{{name}}</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <button class="btn btn-outline-primary mb-2 me-2 geo-primary-txt" (click)="openVerticallyCentered(longContent)">
+            დეტალები
+        </button>
+    </div>
+</div>
+
+<ng-template #longContent let-modal>
+    <div class="modal-header">
+
+        <h4 class="modal-title">{{name}}</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+
+
+

@@ -14,6 +14,9 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { CarRentalComponent } from './components/car-rental/car-rental.component';
+import { FilterComponent } from './components/car-rental/filter/filter.component';
+import { CarsListComponent } from './components/car-rental/cars-list/cars-list.component';
+import { CarCardComponent } from './components/car-rental/cars-list/car-card/car-card.component';
 
 
 @NgModule({
@@ -28,6 +31,9 @@ import { CarRentalComponent } from './components/car-rental/car-rental.component
     LoginComponent,
     HotelsComponent,
     CarRentalComponent,
+    FilterComponent,
+    CarsListComponent,
+    CarCardComponent,
   ],
   imports: [
     BrowserModule,
