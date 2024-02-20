@@ -1,5 +1,5 @@
 <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{'data:image/jpg;base64,' + image}}" [alt]="name">
+    <img class="card-img-top" src="{{image}}" [alt]="name">
     <div class="card-body">
         <h5 class="card-title">{{name + " " + model}}</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -17,7 +17,7 @@
             @for (image of allImages; track image) {
             <ng-template ngbSlide>
                 <div class="picsum-img-wrapper">
-                    <img src="{{'data:image/jpg;base64,' + image}}" alt="Random slide" class="image"/>
+                    <img src="{{image}}" alt="Random slide" class="image"/>
                 </div>
             </ng-template>
             }
@@ -138,9 +138,11 @@
                         <div>Rear View Camera</div>
                         <div>{{camera ? "Yes" : "No"}}</div>
                     </div>
+                    <hr>
                 </div>
+
                 <div class="col-sm">
-                    One of three columns
+                    <app-rental-form></app-rental-form>
                 </div>
             </div>
         </div>

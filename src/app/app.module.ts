@@ -17,6 +17,8 @@ import { CarRentalComponent } from './components/car-rental/car-rental.component
 import { FilterComponent } from './components/car-rental/filter/filter.component';
 import { CarsListComponent } from './components/car-rental/cars-list/cars-list.component';
 import { CarCardComponent } from './components/car-rental/cars-list/car-card/car-card.component';
+import { RentalFormComponent } from './components/car-rental/cars-list/rental-form/rental-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -34,12 +36,15 @@ import { CarCardComponent } from './components/car-rental/cars-list/car-card/car
     FilterComponent,
     CarsListComponent,
     CarCardComponent,
+    RentalFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,14 @@
+
+form {
+  display: flex;
+    flex-direction: column;
+  gap: 20px;
+  .inline{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    label {
+      margin-bottom: 10px;
+    }
+  }
+}

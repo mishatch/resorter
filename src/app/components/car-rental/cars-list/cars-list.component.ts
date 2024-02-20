@@ -27,7 +27,7 @@ export class CarsListComponent {
   }
 
   constructor(private carsService: CarsService) {
-    this.carsService.getCars().subscribe((data: any) => {
+    this.carsService.getCars(this.testData).subscribe((data: any) => {
       this.cars = data.cars;
       console.log(this.cars);
     });
