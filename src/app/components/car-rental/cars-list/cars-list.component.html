@@ -2,9 +2,32 @@
 <div class="wrapper">
     @for(car of cars; track car.name){
     <app-car-card
-    [image]="car.image.images[1]"
+    [image]="car.image.images[0]"
     [name]="car.brand"
     [price]="car.price"
+    [allImages]="car.image.images"
+    [gearbox]="car.chassis.transmission"
+    [engine]="car.engine.engine_type"
+    [model]="car.model"
+    [year]="car.year_of_manufacture"
+    [seats]="car.specs.seats"
+    [drive]="car.chassis.drive"
+    [hp]="car.engine.horsepower"
+    [airbags]="car.specs.airbags"
+    [airConditioning]="car.specs.air_conditioning"
+    [roof]="car.specs.roof"
+    [tank]="car.engine.tank_capacity"
+    [fuel]="car.engine.fuel"
+    [wheelSide]="car.specs.side_wheel"
+    [consumption]="car.engine.fuel_consumption"
+    [interior]="car.specs.interior"
+    [windows]="car.specs.powered_windows"
+    [abs]="car.chassis.abs"
+    [ebd]="car.chassis.ebd"
+    [esp]="car.chassis.esp"
+    [cruiseControl]="car.specs.cruise_control"
+    [parkingAssist]="car.specs.parking_assist"
+    [camera]="car.specs.rear_view_camera"
     >
     </app-car-card>
     }

@@ -1,7 +1,7 @@
 <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="{{'data:image/jpg;base64,' + image}}" [alt]="name">
     <div class="card-body">
-        <h5 class="card-title">{{name}}</h5>
+        <h5 class="card-title">{{name + " " + model}}</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <button class="btn btn-outline-primary mb-2 me-2 geo-primary-txt" (click)="openVerticallyCentered(longContent)">
             დეტალები
@@ -11,12 +11,139 @@
 
 <ng-template #longContent let-modal>
     <div class="modal-header">
+        <div class="images">
+            @if (allImages) {
+            <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+            @for (image of allImages; track image) {
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img src="{{'data:image/jpg;base64,' + image}}" alt="Random slide" class="image"/>
+                </div>
+            </ng-template>
+            }
+            </ngb-carousel>
+            }
 
-        <h4 class="modal-title">{{name}}</h4>
+        </div>
+        <h4 class="modal-title">{{name + " " + model}}</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
-
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h4 class="geo-primary-txt">ტექნიკური მახასიათებლები</h4>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Gearbox</div>
+                        <div>{{gearbox}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Engine</div>
+                        <div>{{engine}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Year Of Manufacture</div>
+                        <div>{{year}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Number Of Seats</div>
+                        <div>{{seats}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Drive</div>
+                        <div>{{drive}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Horse Power</div>
+                        <div>{{hp}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Airbags</div>
+                        <div>{{airbags}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Air Conditioning</div>
+                        <div>{{airConditioning}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Roof</div>
+                        <div>{{roof}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Tank</div>
+                        <div>{{tank}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Fuel</div>
+                        <div>{{fuel}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Wheel Side</div>
+                        <div>{{wheelSide}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Fuel Consumption</div>
+                        <div>{{consumption}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Interior</div>
+                        <div>{{interior}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Power Windows</div>
+                        <div>{{windows}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>ABS</div>
+                        <div>{{abs ? "Yes" : "No"}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>EBD</div>
+                        <div>{{ebd ? "Yes" : "No"}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>ESP</div>
+                        <div>{{esp ? "Yes" : "No" }}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Cruise Control</div>
+                        <div>{{cruiseControl ? "Yes" : "No"}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Parking Assist</div>
+                        <div>{{parkingAssist ? "Yes" : "No"}}</div>
+                    </div>
+                    <hr>
+                    <div class="technical-feature">
+                        <div>Rear View Camera</div>
+                        <div>{{camera ? "Yes" : "No"}}</div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    One of three columns
+                </div>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
