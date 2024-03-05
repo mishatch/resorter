@@ -19,6 +19,7 @@ import { CarsListComponent } from './components/car-rental/cars-list/cars-list.c
 import { CarCardComponent } from './components/car-rental/cars-list/car-card/car-card.component';
 import { RentalFormComponent } from './components/car-rental/cars-list/rental-form/rental-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ReceiptComponent } from './components/car-rental/cars-list/receipt/receipt.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     CarsListComponent,
     CarCardComponent,
     RentalFormComponent,
+    ReceiptComponent,
   ],
   imports: [
     BrowserModule,

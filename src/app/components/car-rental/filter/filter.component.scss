@@ -1,0 +1,77 @@
+.filter-container{
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 100px;
+    background-color: cyan;
+    margin: 0 auto;
+    padding: 20px;
+  >div {
+    width: 20%;
+    >input, >select {
+      width: 100%;
+      border: none;
+      padding: 0 10px;
+      font-size: 20px;
+      height: 30px;
+    }
+    .date-inputs {
+      width: 100%;
+        display: flex;
+      justify-content: center;
+      >input {
+        width: 50%;
+        border: none;
+        padding: 0 10px;
+        font-size: 20px;
+        height: 30px;
+        &:first-child {
+          border-right: 1px solid black;
+        }
+      }
+    }
+    >.price-inputs {
+      >input {
+        width: 50%;
+        border: none;
+        padding: 0 10px;
+        font-size: 20px;
+        &:first-child {
+          border-right: 1px solid black;
+        }
+      }
+    }
+  }
+  >button {
+    align-self: end;
+  }
+}
+@media screen and (max-width: 1008px) {
+  .filter-container {
+    flex-direction: column;
+    height: auto;
+    padding: 40px 20px;
+    >div {
+      width: 100%;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      >input, >select {
+        width: 100%;
+      }
+      >label {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      >.price-inputs{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+      }
+    }
+  }
+}
