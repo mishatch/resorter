@@ -1,7 +1,19 @@
 .wrapper {
-  padding: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
+    .list-container {
+        display: flex;
+        >div {
+        &:last-of-type {
+            width: 80%;
+        }
+        }
+        .filter {
+        width: 100%;
+        }
+    }
 }
+
+

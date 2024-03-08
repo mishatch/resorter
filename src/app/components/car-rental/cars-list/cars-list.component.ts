@@ -27,6 +27,7 @@ export class CarsListComponent implements OnInit {
   getCars(filterData: Filter) {
     this.carsService.getCars(filterData).subscribe((data: any) => {
       this.cars = data.cars;
+      console.log(filterData)
       console.log(this.cars);
     });
   }

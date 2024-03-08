@@ -1,50 +1,115 @@
-<form class="filter-container" [formGroup]="filterForm">
-    <div class="form-group">
-        <label>
-            გაქირავების პერიოდი
-        </label>
-        <div class="date-inputs">
-            <input type="date" formControlName="startDate" [min]="minStartDate">
-            <input type="date" formControlName="endDate">
-        </div>
-        <div *ngIf="filterForm.hasError('dateMismatch') && filterForm.touched" class="error">
-            Start date cannot be after end date.
-        </div>
-    </div>
-    <div class="form-group">
-        <label>
-            ფასი ერთ დღეში
-        </label>
-        <div class="price-inputs">
-            <input type="number" formControlName="minPrice" min="0" max="1000">
-            <input type="number" formControlName="maxPrice" min="0" max="1000">
-        </div>
-    </div>
-    <div class="form-group">
-        <label>
-            მანქანის ტიპები
-        </label>
-        <select formControlName="carType">
 
-            <option disabled selected>ჩამოშალე</option>
-            <option>სედანი</option>
-            <option>ჯიპი</option>
-            <option>ჰეტჩბექი</option>
-            <option>კუპე</option>
-            <option>კაბრიოლეტი</option>
-            <option>პიკაპი</option>
-            <option>მინივენი</option>
-        </select>
+<ng-template #content let-offcanvas >
+    <div class="offcanvas-header">
+        <h4 class="offcanvas-title" id="offcanvas-basic-title">ფილტრი</h4>
+        <button
+                type="button"
+                class="btn-close"
+                aria-label="Close"
+                (click)="offcanvas.dismiss('Cross click')">
+        </button>
     </div>
-    <div class="form-group">
-        <label>
-            გადაცემათა კოლოფი
-        </label>
-        <select formControlName="driveType">
-            <option disabled selected>ჩამოშალე</option>
-            <option>მექანიკა</option>
-            <option>ავტომატიკა</option>
-        </select>
+    <div class="offcanvas-body">
+        <form [formGroup]="filterForm" >
+            <div class="form-group">
+                <label class="geo-primary-txt">წაყვანის თარიღი</label>
+                <input type="date" formControlName="start_date">
+            </div>
+            <div class="form-group">
+                <label class="geo-primary-txt">ჩაბარების თარიღი</label>
+                <input type="date" formControlName="end_date">
+            </div>
+            <div class="form-group">
+                <label class="geo-primary-txt">ავტომობილის წაყვანის ადგილი</label>
+                <select formControlName="pick_up">
+                    <option disabled selected>ჩამოშალე</option>
+                    <option>Zestafoni</option>
+                    <option>ბათუმი</option>
+                    <option>ქუთაისი</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="geo-primary-txt">ფასი 1 დღეზე (ლარებში)</label>
+                <div class="input-group">
+                    <input type="number" formControlName="min_price" class="form-control" placeholder="Min" min="0" max="1000">
+                    <span class="input-group-text">-</span>
+                    <input type="number" formControlName="max_price" class="form-control" placeholder="Max" min="0" max="1000">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="geo-primary-txt">ავტომობილის ტიპი</label>
+                <select>
+                    <option disabled selected>ჩამოშალე</option>
+                    <option>სედანი</option>
+                    <option>ჰეჩბექი</option>
+                    <option>კუპე</option>
+                    <option>ჯიპი</option>
+                    <option>სპორტული</option>
+                    <option>კროსოვერი</option>
+                    <option>კაბრიოლეტი</option>
+                    <option>მინივენი</option>
+                    <option>მიკროავტობუსი</option>
+                    <option>სარკარო</option>
+                    <option>სახლი</option>
+                    <option>სხვა</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="geo-primary-txt">საწვავის ტიპი</label>
+                <select formControlName="fuels" multiple>
+                    <option>Benzin</option>
+                    <option>დიზელი</option>
+                    <option>ჰიბრიდული</option>
+                    <option>ელექტრომობილი</option>
+                </select>
+            </div>
+            <div class="form-group" >
+                <label class="geo-primary-txt">გადაცემათა კოლოფი</label>
+                <select formControlName="transmission" multiple>
+                    <option>მექანიკა</option>
+                    <option>Automatic</option>
+                    <option>ტიპტრონიკი</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="geo-primary-txt">გამოშვების წელი</label>
+                <input type="number" formControlName="year" min="1900" max="2024">
+            </div>
+            <div class="form-group">
+                <label class="geo-primary-txt">საწვავის მოხმარება</label>
+                <div class="input-group">
+                    <input type="number" formControlName="fuel_consumption_min" class="form-control" placeholder="Min" min="0" max="80">
+                    <span class="input-group-text">-</span>
+                    <input type="number" formControlName="fuel_consumption_max" class="form-control" placeholder="Max" min="0" max="80">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="geo-primary-txt">ძრავის მოცულობა</label>
+                <div class="input-group">
+                    <input type="number" formControlName="engine_type_min" class="form-control" placeholder="Min" min="0" max="20">
+                    <span class="input-group-text">-</span>
+                    <input type="number" formControlName="engine_type_max" class="form-control" placeholder="Max" min="0" max="20">
+                </div>
+            </div>
+        </form>
+        <div class="text-end">
+            <button
+                    type="submit"
+                    class="btn btn-outline-dark"
+                    (click)="offcanvas.close('Save click');onSubmit()"
+            >
+                გაფილტვრა
+            </button>
+            <button
+                    (click)="clearFilter()"
+                    class="btn btn-outline-danger"
+            >
+                გასუფთავება
+            </button>
+
+        </div>
     </div>
-    <button class="btn btn-primary" type="submit" (click)="onSubmit()">ძებნა</button>
-</form>
+
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="openEnd(content)">ფილტრი</button>
