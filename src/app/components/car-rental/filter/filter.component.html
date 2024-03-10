@@ -38,11 +38,28 @@
             <div class="form-group">
                 <label class="geo-primary-txt">ფასი 1 დღეზე (ლარებში)</label>
                 <div class="input-group">
-                    <input type="number" formControlName="min_price" class="form-control" placeholder="Min" min="0" max="1000">
+                    <input
+                            type="number"
+                            formControlName="min_price"
+                            class="form-control"
+                            placeholder="Min"
+                            min="0"
+                            max="1000">
                     <span class="input-group-text">-</span>
-                    <input type="number" formControlName="max_price" class="form-control" placeholder="Max" min="0" max="1000">
+                    <input
+                            type="number"
+                            formControlName="max_price"
+                            class="form-control"
+                            placeholder="Max"
+                            min="0"
+                            max="1000">
                 </div>
-                <div *ngIf="filterForm.errors?.['priceRangeInvalid']" class="text-danger">გთხოვთ შეიყვანოთ ვალიდური ინფორმაცია.</div>
+                <div
+                        *ngIf="filterForm.errors?.['priceRangeInvalid']"
+                        class="text-danger"
+                >
+                    გთხოვთ შეიყვანოთ ვალიდური ინფორმაცია.
+                </div>
             </div>
             <div class="form-group">
                 <label class="geo-primary-txt">ავტომობილის ტიპი</label>
@@ -85,20 +102,50 @@
             <div class="form-group">
                 <label class="geo-primary-txt">საწვავის მოხმარება</label>
                 <div class="input-group">
-                    <input type="number" formControlName="fuel_consumption_min" class="form-control" placeholder="Min" min="0" max="80">
+                    <input
+                            type="number"
+                            formControlName="fuel_consumption_min"
+                            class="form-control"
+                            placeholder="Min"
+                            min="0"
+                            max="80">
                     <span class="input-group-text">-</span>
-                    <input type="number" formControlName="fuel_consumption_max" class="form-control" placeholder="Max" min="0" max="80" (click)="log(filterForm.errors)">
+                    <input
+                            type="number"
+                            formControlName="fuel_consumption_max"
+                            class="form-control"
+                            placeholder="Max"
+                            min="0"
+                            max="80"
+                            >
                 </div>
-                <div *ngIf="filterForm.errors?.['fuelConsumptionRangeInvalid']" class="text-danger">
+                <div
+                        *ngIf="filterForm.errors?.['fuelConsumptionRangeInvalid']"
+                        class="text-danger"
+                >
                     გთხოვთ შეიყვანოთ ვალიდური ინფორმაცია.
                 </div>
             </div>
             <div class="form-group">
                 <label class="geo-primary-txt">ძრავის მოცულობა</label>
                 <div class="input-group">
-                    <input type="number" formControlName="engine_type_min" class="form-control" placeholder="Min" min="0" max="20">
+                    <input
+                            type="number"
+                            formControlName="engine_type_min"
+                            class="form-control"
+                            placeholder="Min"
+                            min="0"
+                            max="20"
+                    >
                     <span class="input-group-text">-</span>
-                    <input type="number" formControlName="engine_type_max" class="form-control" placeholder="Max" min="0" max="20">
+                    <input
+                            type="number"
+                            formControlName="engine_type_max"
+                            class="form-control"
+                            placeholder="Max"
+                            min="0"
+                            max="20"
+                    >
                 </div>
                 <div *ngIf="filterForm.errors?.['engineTypeRangeInvalid']" class="text-danger">
                     გთხოვთ შეიყვანოთ ვალიდური ინფორმაცია.

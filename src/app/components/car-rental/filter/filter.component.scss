@@ -14,6 +14,7 @@ button {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    background-color: #fff;
   }
 }
 .text-end {
@@ -26,4 +27,9 @@ justify-content: space-between;
 .disabled {
   pointer-events: none;
   opacity: 0.5;
+}
+@media screen and (max-width: 768px) {
+  ::ng-deep .offcanvas.show {
+    width: 90%;
+  }
 }

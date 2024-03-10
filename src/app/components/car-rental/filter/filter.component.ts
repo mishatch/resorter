@@ -83,7 +83,5 @@ export class FilterComponent {
   get end_date() {
     return this.filterForm.get('end_date');
   }
-  log(x: any) {
-    console.log(x);
-  }
+
 }
