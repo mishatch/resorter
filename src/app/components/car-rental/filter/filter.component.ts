@@ -1,8 +1,14 @@
 import {Component, inject, TemplateRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FilterDataService } from '../../../modules/core/services/filter-data.service';
-import { priceRangeValidator, dateRangeValidator } from './filter-validator';
-import {NgbOffcanvas, OffcanvasDismissReasons} from "@ng-bootstrap/ng-bootstrap";
+import {
+  startDateEarlierThanEndDateValidator,
+  dateNotEarlierThanTodayValidator,
+  priceRangeValidator,
+  fuelConsumptionRangeValidator,
+  engineTypeRangeValidator
+} from './filter-validator';
+import {NgbOffcanvas} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-filter',
@@ -20,13 +26,13 @@ export class FilterComponent {
 
   ngOnInit() {
     this.filterForm = this.formBuilder.group({
-      start_date: [this.minStartDate, Validators.required],
-      end_date: [this.minStartDate, Validators.required],
+      start_date: [this.minStartDate, [Validators.required, dateNotEarlierThanTodayValidator()]],
+      end_date: [this.minStartDate, [Validators.required]],
       min_price: [0, [Validators.min(0), Validators.max(1000)]],
       max_price: [1000, [Validators.min(0), Validators.max(1000)]],
-      body_types: [''],
-      transmission: [''],
-      pick_up: ['თბილისი'],
+      body_types: ['სედანი'],
+      transmission: ['Automatic'],
+      pick_up: ['Tbilisi'],
       fuels: [''],
       drives: [''],
       year: [2000],
@@ -35,7 +41,12 @@ export class FilterComponent {
       engine_type_min: [0, [Validators.min(0), Validators.max(20)]],
       engine_type_max: [20, [Validators.min(0), Validators.max(20)]],
       checkboxes: ['']
-    }, { validator: [priceRangeValidator, dateRangeValidator] });
+    }, { validator: [
+        startDateEarlierThanEndDateValidator(),
+        priceRangeValidator(),
+        fuelConsumptionRangeValidator(),
+        engineTypeRangeValidator()
+      ]});
   }
 
 
@@ -47,11 +58,32 @@ export class FilterComponent {
     }
   }
   clearFilter() {
-    this.filterForm.reset();
     this.filterDataService.setFilterData(null);
+    this.filterForm = this.formBuilder.group({
+      start_date: [this.minStartDate, [Validators.required, dateNotEarlierThanTodayValidator()]],
+      end_date: [this.minStartDate, [Validators.required]],
+      min_price: [0, [Validators.min(0), Validators.max(1000)]],
+      max_price: [1000, [Validators.min(0), Validators.max(1000)]],
+      body_types: ['სედანი'],
+      transmission: ['Automatic'],
+      pick_up: ['Tbilisi'],
+      fuels: [''],
+      drives: [''],
+      year: [2000],
+      fuel_consumption_min: [0, [Validators.min(0), Validators.max(80)]],
+      fuel_consumption_max: [80, [Validators.min(0), Validators.max(80)]],
+      engine_type_min: [0, [Validators.min(0), Validators.max(20)]],
+      engine_type_max: [20, [Validators.min(0), Validators.max(20)]],
+      checkboxes: ['']
+    }, { validator: startDateEarlierThanEndDateValidator() });
   }
   openEnd(content: TemplateRef<any>) {
     this.offcanvasService.open(content, { position: 'end' });
   }
-
+  get end_date() {
+    return this.filterForm.get('end_date');
+  }
+  log(x: any) {
+    console.log(x);
+  }
 }

@@ -10,22 +10,29 @@
         </button>
     </div>
     <div class="offcanvas-body">
-        <form [formGroup]="filterForm" >
+        <form [formGroup]="filterForm">
             <div class="form-group">
                 <label class="geo-primary-txt">წაყვანის თარიღი</label>
                 <input type="date" formControlName="start_date">
             </div>
             <div class="form-group">
                 <label class="geo-primary-txt">ჩაბარების თარიღი</label>
-                <input type="date" formControlName="end_date">
+                <input type="date" formControlName="end_date" >
+                <div
+                        *ngIf="filterForm.errors?.['startDateNotEarlierThanEndDate']
+                     ||
+                     filterForm.controls['start_date'].errors"
+                        class="text-danger">
+                    გთხოვთ შეიყვანოთ ვალიდური ინფორმაცია.
+                </div>
             </div>
             <div class="form-group">
                 <label class="geo-primary-txt">ავტომობილის წაყვანის ადგილი</label>
                 <select formControlName="pick_up">
-                    <option disabled selected>ჩამოშალე</option>
+                    <option selected>Tbilisi</option>
+                    <option>Kutaisi</option>
+                    <option>Batumi</option>
                     <option>Zestafoni</option>
-                    <option>ბათუმი</option>
-                    <option>ქუთაისი</option>
                 </select>
             </div>
             <div class="form-group">
@@ -35,11 +42,11 @@
                     <span class="input-group-text">-</span>
                     <input type="number" formControlName="max_price" class="form-control" placeholder="Max" min="0" max="1000">
                 </div>
+                <div *ngIf="filterForm.errors?.['priceRangeInvalid']" class="text-danger">გთხოვთ შეიყვანოთ ვალიდური ინფორმაცია.</div>
             </div>
             <div class="form-group">
                 <label class="geo-primary-txt">ავტომობილის ტიპი</label>
-                <select>
-                    <option disabled selected>ჩამოშალე</option>
+                <select formControlName="body_types" class="form-select" >
                     <option>სედანი</option>
                     <option>ჰეჩბექი</option>
                     <option>კუპე</option>
@@ -80,7 +87,10 @@
                 <div class="input-group">
                     <input type="number" formControlName="fuel_consumption_min" class="form-control" placeholder="Min" min="0" max="80">
                     <span class="input-group-text">-</span>
-                    <input type="number" formControlName="fuel_consumption_max" class="form-control" placeholder="Max" min="0" max="80">
+                    <input type="number" formControlName="fuel_consumption_max" class="form-control" placeholder="Max" min="0" max="80" (click)="log(filterForm.errors)">
+                </div>
+                <div *ngIf="filterForm.errors?.['fuelConsumptionRangeInvalid']" class="text-danger">
+                    გთხოვთ შეიყვანოთ ვალიდური ინფორმაცია.
                 </div>
             </div>
             <div class="form-group">
@@ -90,19 +100,24 @@
                     <span class="input-group-text">-</span>
                     <input type="number" formControlName="engine_type_max" class="form-control" placeholder="Max" min="0" max="20">
                 </div>
+                <div *ngIf="filterForm.errors?.['engineTypeRangeInvalid']" class="text-danger">
+                    გთხოვთ შეიყვანოთ ვალიდური ინფორმაცია.
+                </div>
             </div>
         </form>
         <div class="text-end">
             <button
                     type="submit"
-                    class="btn btn-outline-dark"
-                    (click)="offcanvas.close('Save click');onSubmit()"
+                    class="btn btn-primary"
+                    (click)="offcanvas.close('Save click'); onSubmit()"
+                    [disabled]="!filterForm.valid"
+                    [class.disabled]="!filterForm.valid"
             >
                 გაფილტვრა
             </button>
             <button
                     (click)="clearFilter()"
-                    class="btn btn-outline-danger"
+                    class="btn btn-danger"
             >
                 გასუფთავება
             </button>
