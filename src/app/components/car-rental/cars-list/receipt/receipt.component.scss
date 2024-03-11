@@ -1,0 +1,17 @@
+@import "../../../../../palette";
+a {
+  padding: 20px 10px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  background-color: $card-bg;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.4s, box-shadow 0.4s;
+  &:hover {
+    background-color: rgba($card-bg, 0.8);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+}

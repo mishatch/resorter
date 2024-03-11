@@ -54,7 +54,6 @@ export class FilterComponent {
     if (this.filterForm.valid) {
       const filterData = this.filterForm.value;
       this.filterDataService.setFilterData(filterData);
-      console.log(filterData);
     }
   }
   clearFilter() {
