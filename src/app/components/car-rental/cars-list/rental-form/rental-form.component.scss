@@ -1,8 +1,12 @@
 
 form {
   display: flex;
-    flex-direction: column;
+  flex-direction: column;
   gap: 20px;
+  width: 100%;
+  min-height: 60vh;
+  padding: 0 20%;
+  justify-content: center;
   .inline{
     display: flex;
     justify-content: space-between;
@@ -11,4 +15,8 @@ form {
       margin-bottom: 10px;
     }
   }
+}
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
 }

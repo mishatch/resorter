@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FilterDataService} from "../../../../modules/core/services/filter-data.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-receipt',
@@ -17,7 +18,7 @@ export class ReceiptComponent {
   timeDifferenceMs: number = this.returnDate.getTime() - this.pickupDate.getTime();
   timeDifferenceDays: number = Math.ceil(this.timeDifferenceMs / (1000 * 60 * 60 * 24));
   rentTime: number = this.timeDifferenceDays + 1;
-    constructor(private filterDataService: FilterDataService) {
+    constructor(private filterDataService: FilterDataService, private modalService: NgbModal) {
     this.filterDataService.getFilterData().subscribe((filterData) => {
                 if(filterData) {
                   this.pickupDate = new Date(filterData.start_date);
@@ -49,5 +50,8 @@ export class ReceiptComponent {
     const day = date.getDate();
     const month = monthsGeorgian[date.getMonth()]; // Get month name from Georgian translations
     return `${day} ${month}`;
+  }
+  closeModal() {
+    this.modalService.dismissAll();
   }
 }

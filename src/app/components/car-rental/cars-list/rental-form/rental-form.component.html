@@ -2,16 +2,21 @@
     <div class="form-group inline">
         <div>
             <label class="geo-primary-txt" > დახვედრა</label>
-            <select class="form-control" formControlName="takePlace">
-                <option class="geo-primary-txt">თბილისი</option>
+            <select class="form-control" formControlName="pickup">
+                <option class="geo-primary-txt" selected>თბილისი</option>
                 <option class="geo-primary-txt">ქუთაისი</option>
                 <option class="geo-primary-txt">ბათუმი</option>
                 <option class="geo-primary-txt">ხარაგაული</option>
             </select>
         </div>
         <div>
-            <input type="time" formControlName="takeTime" class="form-control">
-            <div *ngIf="takeTime?.invalid && (takeTime?.dirty || takeTime?.touched)" class="text-danger geo-primary-txt">
+            <input type="time" formControlName="pickup_time" class="form-control">
+            <div
+                    *ngIf="takeTime?.invalid
+                    &&
+                    (takeTime?.dirty || takeTime?.touched)"
+                    class="text-danger geo-primary-txt"
+            >
                 ეს ველი სავალდებულოა
             </div>
         </div>
@@ -19,7 +24,7 @@
     <div class="form-group inline">
         <div>
             <label class="geo-primary-txt" > ჩაბარება </label>
-            <select class="form-control" formControlName="returnPlace">
+            <select class="form-control" formControlName="dropoff">
                 <option class="geo-primary-txt">თბილისი</option>
                 <option class="geo-primary-txt">ქუთაისი</option>
                 <option class="geo-primary-txt">ბათუმი</option>
@@ -27,8 +32,13 @@
             </select>
         </div>
         <div>
-            <input type="time" formControlName="returnTime" class="form-control">
-            <div *ngIf="takeTime?.invalid && (takeTime?.dirty || takeTime?.touched)" class="text-danger geo-primary-txt">
+            <input type="time" formControlName="dropoff_time" class="form-control">
+            <div
+                    *ngIf="takeTime?.invalid
+                    &&
+                    (takeTime?.dirty || takeTime?.touched)"
+                    class="text-danger geo-primary-txt"
+            >
                 ეს ველი სავალდებულოა
             </div>
         </div>
@@ -36,18 +46,85 @@
 
     <div class="form-group">
         <label class="geo-primary-txt">სრული სახელი და გვარი</label>
-        <input type="text" formControlName="name" class="form-control">
-        <div *ngIf="rentalForm.get('name')?.invalid && (rentalForm.get('name')?.dirty || rentalForm.get('name')?.touched)" class="text-danger">
-            <div *ngIf="rentalForm.get('name')?.errors?.['required']" class="geo-primary-txt">ეს ველი სავალდებულოა</div>
+        <input type="text" formControlName="fullname" class="form-control">
+        <div
+                *ngIf="rentalForm.get('fullname')?.invalid
+                &&
+                (rentalForm.get('fullname')?.dirty
+                ||
+                rentalForm.get('fullname')?.touched)"
+                class="text-danger"
+        >
+            <div
+                    *ngIf="rentalForm.get('fullname')?.errors?.['required']"
+                    class="geo-primary-txt"
+            >ეს ველი სავალდებულოა
+            </div>
         </div>
     </div>
     <div class="form-group">
         <label class="geo-primary-txt">ელ. ფოსტა</label>
         <input type="email" formControlName="email" class="form-control">
-        <div *ngIf="rentalForm.get('email')?.invalid && (rentalForm.get('email')?.dirty || rentalForm.get('email')?.touched)" class="text-danger">
-            <div *ngIf="rentalForm.get('email')?.errors?.['required']">ეს ველი სავალდებულოა</div>
-            <div *ngIf="rentalForm.get('email')?.errors?.['email']">არასწორი ფორმატი</div>
+        <div
+                *ngIf="rentalForm.get('email')?.invalid
+                &&
+                (rentalForm.get('email')?.dirty
+                ||
+                rentalForm.get('email')?.touched)"
+                class="text-danger"
+        >
+            <div
+                    *ngIf="rentalForm.get('email')?.errors?.['required']"
+            >
+                ეს ველი სავალდებულოა
+            </div>
+            <div
+                    *ngIf="rentalForm.get('email')?.errors?.['email']">
+                არასწორი ფორმატი
+            </div>
         </div>
     </div>
-    <button type="submit" [disabled]="rentalForm.invalid" class="btn btn-primary">დაჯავშნე</button>
+    <div class="form-group">
+        <label class="geo-primary-txt">დაბადების თარიღი</label>
+        <input type="date" formControlName="birthdate" class="form-control">
+        <div
+                *ngIf="rentalForm.get('birthdate')?.invalid
+                &&
+                (rentalForm.get('birthdate')?.dirty
+                ||
+                rentalForm.get('birthdate')?.touched)"
+                class="text-danger"
+        >
+            <div
+                    *ngIf="rentalForm.get('birthdate')?.errors?.['required']"
+            >
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="geo-primary-txt">საკონტაქტო ინფორმაცია</label>
+        <input type="text" formControlName="contact" class="form-control">
+        <div
+                *ngIf="rentalForm.get('contact')?.invalid
+                 &&
+                 (rentalForm.get('contact')?.dirty
+                 ||
+                 rentalForm.get('contact')?.touched)
+" class="text-danger">
+            <div
+                    *ngIf="rentalForm.get('contact')?.errors?.['required']"
+            >
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+    </div>
+    <button
+            type="submit"
+            [disabled]="rentalForm.invalid"
+            class="btn btn-primary"
+            [class.disabled]="rentalForm.invalid"
+    >
+        დაჯავშნე
+    </button>
 </form>

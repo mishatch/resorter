@@ -17,12 +17,16 @@ export class RentalFormComponent {
 
   createRentalForm() {
     this.rentalForm = this.fb.group({
-      name: ['', [Validators.required]],
+      fullname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      takePlace: ['', [Validators.required]],
-      takeTime: ['', [Validators.required]],
-      returnPlace: ['', [Validators.required]],
-      returnTime: ['', [Validators.required]],
+      pickup: ['თბილისი', [Validators.required]],
+      pickup_time: ['', [Validators.required]],
+      dropoff: ['თბილისი', [Validators.required]],
+      dropoff_time: ['', [Validators.required]],
+      birthdate: ['', [Validators.required]],
+      contact: ['', [Validators.required]],
+      comment: [''],
+
     });
   }
   submitForm() {
