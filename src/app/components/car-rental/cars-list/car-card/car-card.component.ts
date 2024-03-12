@@ -1,12 +1,13 @@
-import {Component, inject, Input, TemplateRef} from '@angular/core';
-import {NgbCarouselConfig, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import { Component, inject, Input, OnInit, TemplateRef } from '@angular/core';
+import { NgbCarouselConfig, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { RentalFormService } from "../../../../modules/core/services/rental-form.service";
 
 @Component({
   selector: 'app-car-card',
   templateUrl: './car-card.component.html',
-  styleUrl: './car-card.component.scss'
+  styleUrls: ['./car-card.component.scss']
 })
-export class CarCardComponent {
+export class CarCardComponent implements OnInit {
   @Input() image!: string;
   @Input() name!: string;
   @Input() price!: number;
@@ -33,14 +34,25 @@ export class CarCardComponent {
   @Input() cruiseControl!: boolean;
   @Input() parkingAssist!: boolean;
   @Input() camera!: boolean;
-  constructor(config: NgbCarouselConfig) {
+  @Input() id!: string;
+
+  constructor(
+      config: NgbCarouselConfig,
+      private rentalFormService: RentalFormService
+  ) {
     config.showNavigationArrows = true;
     config.showNavigationIndicators = true;
   }
+
+  ngOnInit() {
+  }
+
   private modalService = inject(NgbModal);
   openVerticallyCentered(content: TemplateRef<any>) {
-    this.modalService.open(content, { centered: true, size: "lg" }, );
+    this.modalService.open(content, { centered: true, size: "lg" });
+    this.rentalFormService.setId(this.id);
   }
+
   showNavigationArrows = true;
   showNavigationIndicators = false;
 }

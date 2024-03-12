@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {RentalFormService} from "../../../../modules/core/services/rental-form.service";
 
 @Component({
   selector: 'app-rental-form',
@@ -8,11 +9,15 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class RentalFormComponent {
   rentalForm!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  carId: string | undefined;
+  formSubmitted = false;
+  constructor(private fb: FormBuilder, private rentalFormService: RentalFormService) { }
 
   ngOnInit(): void {
     this.createRentalForm();
-
+    this.rentalFormService.carId$.subscribe((carId) => {
+      this.carId = carId;
+    });
   }
 
   createRentalForm() {
@@ -31,11 +36,15 @@ export class RentalFormComponent {
   }
   submitForm() {
     if (this.rentalForm.valid) {
-      console.log('Form submitted successfully');
-      console.log(this.rentalForm.value);
-    } else {
-      console.log('Form has errors, please check');
+      const rentalData = { ...this.rentalForm.value };
+      rentalData.rent_date = this.rentalFormService.getStartDate();
+      rentalData.unrent_date = this.rentalFormService.getEndDate();
+      rentalData.car_id = this.carId;
+        this.rentalFormService.takeOrder(rentalData).subscribe((response) => {
+
+        });
     }
+    this.formSubmitted = true;
   }
   get name() {
     return this.rentalForm.get('name');

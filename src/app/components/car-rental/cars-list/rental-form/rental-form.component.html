@@ -1,4 +1,4 @@
-<form [formGroup]="rentalForm" (ngSubmit)="submitForm()">
+<form *ngIf="!formSubmitted" [formGroup]="rentalForm" (ngSubmit)="submitForm()" >
     <div class="form-group inline">
         <div>
             <label class="geo-primary-txt" > დახვედრა</label>
@@ -119,6 +119,12 @@
             </div>
         </div>
     </div>
+    <div class="form-group">
+        <label class="geo-primary-txt">
+            კომენტარი
+        </label>
+        <textarea formControlName="comment" class="form-control geo-primary-txt" ></textarea>
+    </div>
     <button
             type="submit"
             [disabled]="rentalForm.invalid"
@@ -128,3 +134,8 @@
         დაჯავშნე
     </button>
 </form>
+<div *ngIf="formSubmitted" class="success-msg">
+    <h3 class="geo-primary-txt">თქვენი მოთხოვნა მიღებულია!</h3>
+    <p class="geo-primary-txt">მანქანის მფლობელი უახლოეს პერიოდში დაგიკავშირდებათ</p>
+    <a routerLink="/">მთავარ გვერდზე დაბრუნება</a>
+</div>

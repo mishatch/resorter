@@ -21,12 +21,14 @@ export class CarsListComponent implements OnInit {
     this.filterDataService.getFilterData().subscribe((filterData: Filter) => {
       this.filterData = filterData;
       this.getCars(filterData);
+
     });
   }
 
   getCars(filterData: Filter) {
     this.carsService.getCars(filterData).subscribe((data: any) => {
       this.cars = data.cars;
+      console.log(this.cars)
       this.noCarsFound = this.cars.length === 0;
     });
   }

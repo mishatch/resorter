@@ -9,6 +9,7 @@ import {
   engineTypeRangeValidator
 } from './filter-validator';
 import {NgbOffcanvas} from "@ng-bootstrap/ng-bootstrap";
+import {RentalFormService} from "../../../modules/core/services/rental-form.service";
 
 @Component({
   selector: 'app-filter',
@@ -21,7 +22,8 @@ export class FilterComponent {
   private offcanvasService = inject(NgbOffcanvas);
   constructor(
       private formBuilder: FormBuilder,
-      private filterDataService: FilterDataService
+      private filterDataService: FilterDataService,
+      private rentalFormService: RentalFormService
   ) {}
 
   ngOnInit() {
@@ -54,6 +56,8 @@ export class FilterComponent {
     if (this.filterForm.valid) {
       const filterData = this.filterForm.value;
       this.filterDataService.setFilterData(filterData);
+      this.rentalFormService.setStartDate(filterData.start_date);
+        this.rentalFormService.setEndDate(filterData.end_date);
     }
   }
   clearFilter() {
