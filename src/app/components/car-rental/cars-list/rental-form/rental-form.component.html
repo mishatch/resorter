@@ -110,13 +110,15 @@
                  &&
                  (rentalForm.get('contact')?.dirty
                  ||
-                 rentalForm.get('contact')?.touched)
-" class="text-danger">
+                 rentalForm.get('contact')?.touched)"
+                class="text-danger"
+        >
             <div
                     *ngIf="rentalForm.get('contact')?.errors?.['required']"
             >
                 ეს ველი სავალდებულოა
             </div>
+            <div *ngIf="rentalForm.get('contact')?.errors?.['invalidPhoneNumber']" class="geo-primary-txt">გთხოვთ შეიყვანოთ თქვენი მობილურის ნომერი. </div>
         </div>
     </div>
     <div class="form-group">

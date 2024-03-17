@@ -44,7 +44,9 @@
                             class="form-control"
                             placeholder="Min"
                             min="0"
-                            max="1000">
+                            max="1000"
+                            appNumberOnly
+                    >
                     <span class="input-group-text">-</span>
                     <input
                             type="number"
@@ -52,7 +54,9 @@
                             class="form-control"
                             placeholder="Max"
                             min="0"
-                            max="1000">
+                            max="1000"
+                            appNumberOnly
+                    >
                 </div>
                 <div
                         *ngIf="filterForm.errors?.['priceRangeInvalid']"
@@ -97,7 +101,7 @@
             </div>
             <div class="form-group">
                 <label class="geo-primary-txt">გამოშვების წელი</label>
-                <input type="number" formControlName="year" min="1900" max="2024">
+                <input type="number" formControlName="year" min="1900" max="2024" appNumberOnly>
             </div>
             <div class="form-group">
                 <label class="geo-primary-txt">საწვავის მოხმარება</label>
@@ -108,7 +112,9 @@
                             class="form-control"
                             placeholder="Min"
                             min="0"
-                            max="80">
+                            max="80"
+                            appNumberOnly
+                    >
                     <span class="input-group-text">-</span>
                     <input
                             type="number"
@@ -117,6 +123,7 @@
                             placeholder="Max"
                             min="0"
                             max="80"
+                            appNumberOnly
                             >
                 </div>
                 <div
@@ -136,6 +143,7 @@
                             placeholder="Min"
                             min="0"
                             max="20"
+                            appNumberOnly
                     >
                     <span class="input-group-text">-</span>
                     <input
@@ -145,6 +153,7 @@
                             placeholder="Max"
                             min="0"
                             max="20"
+                            appNumberOnly
                     >
                 </div>
                 <div *ngIf="filterForm.errors?.['engineTypeRangeInvalid']" class="text-danger">

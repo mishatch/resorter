@@ -20,6 +20,7 @@ import { CarCardComponent } from './components/car-rental/cars-list/car-card/car
 import { RentalFormComponent } from './components/car-rental/cars-list/rental-form/rental-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ReceiptComponent } from './components/car-rental/cars-list/receipt/receipt.component';
+import {NumberOnlyDirective} from "./modules/core/directives/number-only.directive";
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ReceiptComponent } from './components/car-rental/cars-list/receipt/rece
     CarCardComponent,
     RentalFormComponent,
     ReceiptComponent,
+      NumberOnlyDirective
   ],
   imports: [
     BrowserModule,

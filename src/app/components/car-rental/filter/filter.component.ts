@@ -18,7 +18,7 @@ import { RentalFormService } from "../../../modules/core/services/rental-form.se
 })
 export class FilterComponent {
   filterForm!: FormGroup;
-  minStartDate = this.formatDate(new Date()); // Set to the current date in "YYYY-MM-DD" format
+  minStartDate = this.formatDate(new Date());
   private offcanvasService = inject(NgbOffcanvas);
 
   constructor(

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RentalFormService} from "../../../../modules/core/services/rental-form.service";
+import {georgianPhoneNumberValidator} from "../../../../modules/core/validators/georgian-phone.validator";
 
 @Component({
   selector: 'app-rental-form',
@@ -29,7 +30,7 @@ export class RentalFormComponent {
       dropoff: ['თბილისი', [Validators.required]],
       dropoff_time: ['', [Validators.required]],
       birthdate: ['', [Validators.required]],
-      contact: ['', [Validators.required]],
+      contact: ['+995', [Validators.required, georgianPhoneNumberValidator()]],
       comment: [''],
 
     });
@@ -57,5 +58,8 @@ export class RentalFormComponent {
     }
     get takeTime() {
         return this.rentalForm.get('takeTime');
+    }
+    log(x: any){
+        console.log(x);
     }
 }
