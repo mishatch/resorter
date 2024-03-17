@@ -1,4 +1,4 @@
-import {Component, inject, TemplateRef} from '@angular/core';
+import { Component, inject, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FilterDataService } from '../../../modules/core/services/filter-data.service';
 import {
@@ -8,8 +8,8 @@ import {
   fuelConsumptionRangeValidator,
   engineTypeRangeValidator
 } from './filter-validator';
-import {NgbOffcanvas} from "@ng-bootstrap/ng-bootstrap";
-import {RentalFormService} from "../../../modules/core/services/rental-form.service";
+import { NgbOffcanvas } from "@ng-bootstrap/ng-bootstrap";
+import { RentalFormService } from "../../../modules/core/services/rental-form.service";
 
 @Component({
   selector: 'app-filter',
@@ -18,13 +18,15 @@ import {RentalFormService} from "../../../modules/core/services/rental-form.serv
 })
 export class FilterComponent {
   filterForm!: FormGroup;
-  minStartDate = new Date().toISOString().split('T')[0];
+  minStartDate = this.formatDate(new Date()); // Set to the current date in "YYYY-MM-DD" format
   private offcanvasService = inject(NgbOffcanvas);
+
   constructor(
       private formBuilder: FormBuilder,
       private filterDataService: FilterDataService,
       private rentalFormService: RentalFormService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.filterForm = this.formBuilder.group({
@@ -51,15 +53,15 @@ export class FilterComponent {
       ]});
   }
 
-
   onSubmit() {
     if (this.filterForm.valid) {
       const filterData = this.filterForm.value;
       this.filterDataService.setFilterData(filterData);
       this.rentalFormService.setStartDate(filterData.start_date);
-        this.rentalFormService.setEndDate(filterData.end_date);
+      this.rentalFormService.setEndDate(filterData.end_date);
     }
   }
+
   clearFilter() {
     this.filterDataService.setFilterData(null);
     this.filterForm = this.formBuilder.group({
@@ -80,11 +82,19 @@ export class FilterComponent {
       checkboxes: ['']
     }, { validator: startDateEarlierThanEndDateValidator() });
   }
+
   openEnd(content: TemplateRef<any>) {
     this.offcanvasService.open(content, { position: 'end' });
   }
+
   get end_date() {
     return this.filterForm.get('end_date');
   }
 
+  private formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
 }

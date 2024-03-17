@@ -9,7 +9,7 @@ export class RentalFormService {
   private startDate: string = this.getCurrentDate();
   private endDate: string = this.getCurrentDate();
   private carIdSubject = new BehaviorSubject<string | undefined>(undefined);
-  private apiUrl = 'https://resorter-server-3w9ys.ondigitalocean.app/';
+  private apiUrl = 'https://resorter.ge';
   carId$ = this.carIdSubject.asObservable();
 
   constructor(private http: HttpClient) {}
@@ -34,9 +34,6 @@ export class RentalFormService {
     this.carIdSubject.next(carId);
   }
 
-  getId(): string | undefined {
-    return this.carIdSubject.getValue();
-  }
 
   private getCurrentDate(): string {
     const today = new Date();

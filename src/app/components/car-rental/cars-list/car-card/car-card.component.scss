@@ -1,3 +1,4 @@
+@import "../../../../../palette";
 .image {
   object-fit: cover;
   max-width: 100%;
@@ -13,6 +14,12 @@
 }
 .modal-header, .modal-footer {
   border: none;
+}
+.card {
+  button {
+    background-color: $card-bg;
+    color: $txt-dark;
+  }
 }
 
 @media (max-width: 575px) {

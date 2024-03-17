@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ResorterServicesService {
-  private apiUrl = "https://resorter-server-3w9ys.ondigitalocean.app/";
+  private apiUrl = "https://resorter.ge";
 
   constructor(private http: HttpClient) { }
 
