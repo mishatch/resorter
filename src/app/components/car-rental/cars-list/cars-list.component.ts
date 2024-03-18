@@ -12,6 +12,7 @@ export class CarsListComponent implements OnInit {
   cars: any;
   filterData!: Filter;
   noCarsFound = false;
+  isLoading = true;
   constructor(
       private carsService: CarsService,
       private filterDataService: FilterDataService
@@ -21,7 +22,6 @@ export class CarsListComponent implements OnInit {
     this.filterDataService.getFilterData().subscribe((filterData: Filter) => {
       this.filterData = filterData;
       this.getCars(filterData);
-
     });
   }
 
@@ -30,6 +30,8 @@ export class CarsListComponent implements OnInit {
       this.cars = data.cars;
       console.log(this.cars)
       this.noCarsFound = this.cars.length === 0;
+      this.isLoading = false;
+
     });
   }
 }

@@ -21,6 +21,7 @@ import { RentalFormComponent } from './components/car-rental/cars-list/rental-fo
 import {ReactiveFormsModule} from "@angular/forms";
 import { ReceiptComponent } from './components/car-rental/cars-list/receipt/receipt.component';
 import {NumberOnlyDirective} from "./modules/core/directives/number-only.directive";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -48,7 +49,7 @@ import {NumberOnlyDirective} from "./modules/core/directives/number-only.directi
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

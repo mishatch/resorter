@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'bootstrap/scss/bootstrap';
+@import "./palette";
 @font-face {
     font-family: 'Arial Geo';
     src: url('./assets/fonts/arial_geo.ttf');
@@ -10,3 +11,44 @@
     font-family: "Arial Geo", Arial, sans-serif;
 }
 
+.disable-scroll {
+    overflow: hidden;
+}
+.spinner {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top-color: $card-bg;
+    animation: spin 1s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.loading-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    >p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

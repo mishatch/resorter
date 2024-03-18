@@ -1,6 +1,11 @@
 <h1 class="geo-primary-txt">
     სერვისები
 </h1>
+<div *ngIf="isLoading" class="loading-animation">
+    <div class="spinner">
+    </div>
+    <p>Loading...</p>
+</div>
 <div class="wrapper" id="wrapper">
 
     @for(service of resorterServices; track service.name){

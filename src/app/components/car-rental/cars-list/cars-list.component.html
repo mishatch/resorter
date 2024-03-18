@@ -1,4 +1,9 @@
 <div class="list-container">
+    <div *ngIf="isLoading" class="loading-animation">
+        <div class="spinner">
+        </div>
+        <p>Loading...</p>
+    </div>
     <app-filter class="filter"></app-filter>
     <div class="wrapper">
         @for(car of cars; track car.name){
