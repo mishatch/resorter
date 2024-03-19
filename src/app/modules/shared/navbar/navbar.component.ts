@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit, TemplateRef} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   isNavbarOpen: boolean = false;
+  private modalService = inject(NgbModal);
 
   constructor(private router: Router) { }
 
@@ -18,7 +20,9 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
-
+  openVerticallyCentered(content: TemplateRef<any>) {
+    this.modalService.open(content, { centered: true });
+  }
   toggleNavbar(): void {
     this.isNavbarOpen = !this.isNavbarOpen;
   }

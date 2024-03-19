@@ -1,0 +1,46 @@
+@import "../../../palette";
+
+.wrapper {
+  >div {
+    border: none;
+  }
+  >.modal-header {
+    position: relative;
+    >h4 {
+      position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+    }
+  }
+  >.modal-body {
+    padding: 10px 40px;
+    .form-group {
+      margin-bottom: 20px;
+      >input {
+        padding: 10px;
+        border-radius: 15px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+      }
+    }
+  }
+  >.modal-footer{
+    padding: 0 40px;
+    margin-bottom: 20px;
+    >button {
+      width: 100%;
+      background-color: $card-bg;
+      color: $txt-dark;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: background-color 0.4s, box-shadow 0.4s;
+      &:hover {
+        background-color: rgba($card-bg, 0.8);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}

@@ -38,13 +38,13 @@ export class FilterComponent {
       transmission: ['Automatic'],
       pick_up: ['Tbilisi'],
       fuels: [''],
-      drives: [''],
+      drives: [["Front wheel","Rear wheel"]],
       year: [2000],
       fuel_consumption_min: [0, [Validators.min(0), Validators.max(80)]],
       fuel_consumption_max: [80, [Validators.min(0), Validators.max(80)]],
       engine_type_min: [0, [Validators.min(0), Validators.max(20)]],
       engine_type_max: [20, [Validators.min(0), Validators.max(20)]],
-      checkboxes: ['']
+      checkboxes: [[]]
     }, { validator: [
         startDateEarlierThanEndDateValidator(),
         priceRangeValidator(),

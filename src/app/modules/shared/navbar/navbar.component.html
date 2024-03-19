@@ -29,8 +29,12 @@
       <a href="#" class="geo-primary-txt">წესები და პირობები</a>
     </li>
     <li>
+      <a class="geo-primary-txt login" (click)="openVerticallyCentered(content)">შესვლა</a>
+    </li>
+    <li>
       <a href="#contact" class="geo-primary-txt">კონტაქტი</a>
     </li>
+
     <li>
       <div class="language-changer row">
         <div class="col">
@@ -45,7 +49,9 @@
           </div>
         </div>
       </div>
-
     </li>
   </ul>
 </nav>
+<ng-template #content let-modal>
+  <app-login [modalRef]="modal"></app-login>
+</ng-template>
