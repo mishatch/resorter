@@ -17,12 +17,13 @@ import { CarRentalComponent } from './components/car-rental/car-rental.component
 import { FilterComponent } from './components/car-rental/filter/filter.component';
 import { CarsListComponent } from './components/car-rental/cars-list/cars-list.component';
 import { CarCardComponent } from './components/car-rental/cars-list/car-card/car-card.component';
-import { RentalFormComponent } from './components/car-rental/cars-list/rental-form/rental-form.component';
+import { RentalFormComponent } from './components/car-rental/rental-form/rental-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ReceiptComponent } from './components/car-rental/cars-list/receipt/receipt.component';
 import {NumberOnlyDirective} from "./modules/core/directives/number-only.directive";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { RegistrationComponent } from './components/authentication/registration/registration.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { RegistrationComponent } from './components/authentication/registration/
     RentalFormComponent,
     ReceiptComponent,
       NumberOnlyDirective,
-      RegistrationComponent
+      RegistrationComponent,
+      ProfileComponent
   ],
   imports: [
     BrowserModule,

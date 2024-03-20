@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="!submitClicked || responseError">
+<div class="wrapper login" *ngIf="(!submitClicked || responseError) && !registration">
     <div class="modal-header">
         <h4 class="modal-title geo-primary-txt">შესვლა</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
@@ -72,14 +72,14 @@
             შესვლა
         </button>
         <p>
-            არ გაქვს ანგარიში? <a routerLink="/registration" (click)="closeModal()"> დარეგისტრირდი</a>
+            არ გაქვს ანგარიში? <a (click)="registrationReq()" class="geo-primary-txt decorated"> დარეგისტრირდი</a>
 
         </p>
     </div>
 
-</div>
+</div >
 
-<div class="wrapper" *ngIf="!responseError && submitClicked">
+<div class="wrapper login-success" *ngIf="!responseError && submitClicked">
     <div class="modal-header">
         <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
     </div>
@@ -101,4 +101,74 @@
 
     </div>
 
+</div>
+<div class="wrapper registration" *ngIf="registration && !submitClicked">
+    <div class="modal-header">
+        <h4 class="modal-title geo-primary-txt">რეგისტრაცია</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="registrationForm">
+            <div class="form-group">
+                <label class="geo-primary-txt">
+                    კომპანიის სახელი
+                </label>
+                <input type="text" class="form-control" formControlName="company_name">
+                <div
+                        *ngIf="this.registrationForm.get('company_name')?.errors?.['required'] && this.registrationForm.get('company_name')?.touched"
+                        class="geo-primary-txt text-danger"
+                >
+                    ეს ველი სავალდებულოა
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="geo-primary-txt">
+                    ელ. ფოსტა
+                </label>
+                <input type="email" class="form-control" formControlName="email">
+                <div *ngIf="this.registrationForm.get('email')?.errors?.['required'] && this.registrationForm.get('email')?.touched" class="geo-primary-txt text-danger">
+                    ეს ველი სავალდებულოა
+                </div>
+                <div *ngIf="this.registrationForm.get('email')?.errors?.['email']" class="geo-primary-txt text-danger">
+                    გთხოვთ შეიყვანოთ ვალიდური ინფორმაცია
+                 </div>
+            </div>
+            <div class="form-group">
+                <label class="geo-primary-txt">
+                    პაროლი
+                </label>
+                <input type="password" class="form-control" formControlName="password">
+                <div *ngIf="this.registrationForm.get('password')?.errors?.['required'] && this.registrationForm.get('password')?.touched" class="geo-primary-txt text-danger">
+                    ეს ველი სავალდებულოა
+                </div>
+                <div *ngIf="this.registrationForm.get('password')?.errors?.['minlength']" class="geo-primary-txt text-danger">
+                    მინიმუმ 6 სიმბოლო
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="geo-primary-txt">
+                    ტელეფონის ნომერი
+                </label>
+                <input type="text" class="form-control" formControlName="phone">
+                <div *ngIf="this.registrationForm.get('phone')?.errors?.['invalidPhoneNumber'] && this.registrationForm.get('phone')?.touched" class="geo-primary-txt text-danger">
+                    გთხოვთ შეიყვანოთ ვალიდური ინფორმაცია
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer geo-primary-txt">
+        <button
+                type="button"
+                class="btn
+                geo-primary-txt"
+                (click)="onRegistrationSubmit()"
+                [disabled]="registrationForm.invalid"
+                [class.disabled]="registrationForm.invalid"
+        >
+            რეგისტრაცია
+        </button>
+        გაქვთ ანგარიში? <a (click)="loginReq()" class="geo-primary-txt decorated"> შესვლა</a>
+    </div>
 </div>

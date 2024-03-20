@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {RentalFormService} from "../../../../modules/core/services/rental-form.service";
-import {georgianPhoneNumberValidator} from "../../../../modules/core/validators/georgian-phone.validator";
+import {RentalFormService} from "../../../modules/core/services/rental-form.service";
+import {georgianPhoneNumberValidator} from "../../../modules/core/validators/georgian-phone.validator";
 
 @Component({
   selector: 'app-rental-form',
