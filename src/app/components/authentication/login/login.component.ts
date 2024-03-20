@@ -1,0 +1,51 @@
+import {Component, inject, Input} from '@angular/core';
+import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../../modules/core/services/auth.service";
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
+})
+export class LoginComponent {
+  private modalService = inject(NgbModal);
+  @Input() modalRef!: NgbModalRef;
+  loginForm!: FormGroup;
+  submitClicked: boolean = false;
+  responseError: boolean = false;
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      remember: [false]
+    });
+  }
+  closeModal() {
+    this.modalRef.close();
+  }
+  get email(){
+    return this.loginForm.get('email');
+  }
+    get password(){
+        return this.loginForm.get('password');
+    }
+    onSubmit() {
+        if (this.loginForm.valid) {
+          console.log(this.loginForm.value);
+            this.authService.login(this.loginForm.value).subscribe((res: any) => {
+              this.submitClicked = true;
+              if(res.Error){
+                this.responseError = true;
+              } else {
+                this.responseError = false;
+                this.authService.$loginStatus.next(true);
+              }
+            });
+        }
+    }
+    log(x: any) {
+        console.log(x);
+    }
+}

@@ -1,6 +1,7 @@
 import {Component, inject, OnInit, TemplateRef} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'app-navbar',
@@ -10,13 +11,17 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 export class NavbarComponent implements OnInit {
   isNavbarOpen: boolean = false;
   private modalService = inject(NgbModal);
-
-  constructor(private router: Router) { }
+  isLoggedIn: boolean = false;
+  constructor(private router: Router, private authService: AuthService) {
+    this.authService.$loginStatus.subscribe((res: any) => {
+      this.isLoggedIn = res;
+    });
+  }
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.isNavbarOpen = false; // Close the navbar after navigation
+        this.isNavbarOpen = false;
       }
     });
   }

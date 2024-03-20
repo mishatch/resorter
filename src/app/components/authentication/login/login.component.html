@@ -1,0 +1,104 @@
+<div class="wrapper" *ngIf="!submitClicked || responseError">
+    <div class="modal-header">
+        <h4 class="modal-title geo-primary-txt">შესვლა</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="loginForm">
+            <div class="form-group">
+                <label class="geo-primary-txt" >ელ. ფოსტა</label>
+                <input
+                        type="email"
+                        class="form-control geo-primary-txt"
+                        id="email"
+                        placeholder="შეიყვანეთ ელ. ფოსტა"
+                        formControlName="email"
+                        [class.invalid]="submitClicked && responseError"
+                >
+                <div *ngIf="email?.errors?.['email']"
+                     class="geo-primary-txt text-danger"
+                >
+                    გთხოვთ შეიყვანოთ ვალიდური ინფორმაცია
+                </div>
+                <div
+                        *ngIf="email?.errors?.['required'] && email?.touched"
+                        class="geo-primary-txt text-danger"
+                >
+                    ეს ველი სავალდებულოა
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="geo-primary-txt">პაროლი</label>
+                <input
+                        type="password"
+                        class="form-control geo-primary-txt"
+                        id="password"
+                        placeholder="შეიყვანეთ პაროლი"
+                        formControlName="password"
+                        [class.invalid]="submitClicked && responseError"
+
+                >
+                <div
+                        *ngIf="password?.touched && password?.errors?.['required']"
+                        class="text-danger geo-primary-txt"
+                >
+                    ეს ველი სავალდებულოა
+                </div>
+                <div
+                        *ngIf="password?.errors?.['minlength']"
+                        class="geo-primary-txt text-danger"
+                >
+                    მინიმუმ 6 სიმბოლო
+                </div>
+                <p
+                        class="geo-primary-txt text-danger"
+                        *ngIf="submitClicked && responseError"
+                >
+                    ელ. ფოსტა ან პაროლი არასწორია.
+                </p>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+
+        <button
+                type="button"
+                class="btn
+                geo-primary-txt"
+                (click)="onSubmit()"
+                [disabled]="loginForm.invalid"
+                [class.disabled]="loginForm.invalid"
+        >
+            შესვლა
+        </button>
+        <p>
+            არ გაქვს ანგარიში? <a routerLink="/registration" (click)="closeModal()"> დარეგისტრირდი</a>
+
+        </p>
+    </div>
+
+</div>
+
+<div class="wrapper" *ngIf="!responseError && submitClicked">
+    <div class="modal-header">
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body success">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+            <path fill="#c8e6c9" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path><path fill="#4caf50" d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"></path>
+        </svg>
+        <p class="geo-primary-txt">წარმატებული ავტორიზაცია</p>
+    </div>
+    <div class="modal-footer">
+        <button
+                type="button"
+                class="btn
+                geo-primary-txt"
+                (click)="closeModal()"
+        >
+            კარგი
+        </button>
+
+    </div>
+
+</div>

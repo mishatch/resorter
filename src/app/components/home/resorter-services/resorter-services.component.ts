@@ -8,7 +8,7 @@ import { ResorterServicesService } from "../../../modules/core/services/resorter
 })
 export class ResorterServicesComponent implements OnInit {
     resorterServices: any[] = [];
-    isLoading: boolean = true; // Set to true initially
+    isLoading: boolean = true;
     constructor(private services: ResorterServicesService) { }
 
     ngOnInit(): void {

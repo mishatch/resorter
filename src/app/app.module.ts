@@ -11,7 +11,7 @@ import { ServiceCardComponent } from './components/home/resorter-services/servic
 import {HttpClientModule} from "@angular/common/http";
 import { FooterComponent } from './modules/shared/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/authentication/login/login.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { CarRentalComponent } from './components/car-rental/car-rental.component';
 import { FilterComponent } from './components/car-rental/filter/filter.component';
@@ -22,6 +22,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { ReceiptComponent } from './components/car-rental/cars-list/receipt/receipt.component';
 import {NumberOnlyDirective} from "./modules/core/directives/number-only.directive";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { RegistrationComponent } from './components/authentication/registration/registration.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     CarCardComponent,
     RentalFormComponent,
     ReceiptComponent,
-      NumberOnlyDirective
+      NumberOnlyDirective,
+      RegistrationComponent
   ],
   imports: [
     BrowserModule,

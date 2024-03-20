@@ -1,4 +1,4 @@
-@import "../../../palette";
+@import "../../../../palette";
 
 .wrapper {
   >div {
@@ -24,11 +24,22 @@
         border: 1px solid #ccc;
         background-color: #fff;
       }
+      .invalid {
+        border: 1px solid red;
+        transition: 0.3s;
+      }
     }
+  }
+  >.modal-body.success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   >.modal-footer{
     padding: 0 40px;
     margin-bottom: 20px;
+    justify-content: center;
     >button {
       width: 100%;
       background-color: $card-bg;
@@ -43,4 +54,14 @@
       }
     }
   }
+}
+.disabled {
+    background-color: #ccc;
+    color: #fff;
+    cursor: not-allowed;
+  border: none;
+    &:hover {
+        background-color: #ccc;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 }
