@@ -56,14 +56,9 @@ export class LoginComponent {
     }
     onRegistrationSubmit() {
       if (this.registrationForm.valid) {
-        console.log(this.registrationForm.value);
         this.authService.registration(this.registrationForm.value).subscribe((res: any) => {
           this.submitClicked = true;
-          if(res.Error){
-            this.responseError = true;
-          } else {
-            this.responseError = false;
-          }
+          res.Error ? this.responseError = true : this.responseError = false;
         });
       }
     }
