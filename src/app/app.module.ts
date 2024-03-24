@@ -24,6 +24,7 @@ import {NumberOnlyDirective} from "./modules/core/directives/number-only.directi
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { RegistrationComponent } from './components/authentication/registration/registration.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AddCarComponent } from './components/add-car/add-car.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     ReceiptComponent,
       NumberOnlyDirective,
       RegistrationComponent,
-      ProfileComponent
+      ProfileComponent,
+      AddCarComponent
   ],
   imports: [
     BrowserModule,

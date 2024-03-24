@@ -29,4 +29,8 @@ export class CarsService {
       return this.http.get<any>(`${this.apiUrl}/filter/cars`);
     }
   }
+getCarOptions(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/forms/car`);
+  }
+
 }

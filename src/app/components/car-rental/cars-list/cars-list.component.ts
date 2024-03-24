@@ -28,7 +28,6 @@ export class CarsListComponent implements OnInit {
   getCars(filterData: Filter) {
     this.carsService.getCars(filterData).subscribe((data: any) => {
       this.cars = data.cars;
-      console.log(this.cars)
       this.noCarsFound = this.cars.length === 0;
       this.isLoading = false;
 

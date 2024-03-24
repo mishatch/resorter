@@ -7,6 +7,7 @@ import {CarRentalComponent} from "./components/car-rental/car-rental.component";
 import {RentalFormComponent} from "./components/car-rental/rental-form/rental-form.component";
 import {RegistrationComponent} from "./components/authentication/registration/registration.component";
 import {ProfileComponent} from "./components/profile/profile.component";
+import {AddCarComponent} from "./components/add-car/add-car.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'car-rental', component: CarRentalComponent },
   { path: 'rental-form', component: RentalFormComponent },
   { path: 'registration', component: RegistrationComponent},
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'add-car', component: AddCarComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,0 +1,43 @@
+@import "../../../palette";
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+button {
+  padding: 10px 20px;
+  color: $txt-dark;
+  background-color: $card-bg;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.4s, box-shadow 0.4s;
+  border: none;
+  &:hover {
+    background-color: rgba($card-bg, 0.8);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+@media screen and (min-width: 768px) {
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 40px;
+    >div {
+      width: 48%;
+    }
+  }
+}

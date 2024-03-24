@@ -10,6 +10,7 @@ import {
 } from './filter-validator';
 import { NgbOffcanvas } from "@ng-bootstrap/ng-bootstrap";
 import { RentalFormService } from "../../../modules/core/services/rental-form.service";
+import {AuthService} from "../../../modules/core/services/auth.service";
 
 @Component({
   selector: 'app-filter',
@@ -19,13 +20,18 @@ import { RentalFormService } from "../../../modules/core/services/rental-form.se
 export class FilterComponent {
   filterForm!: FormGroup;
   minStartDate = this.formatDate(new Date());
+  isLoggedIn!: boolean;
   private offcanvasService = inject(NgbOffcanvas);
 
   constructor(
       private formBuilder: FormBuilder,
       private filterDataService: FilterDataService,
-      private rentalFormService: RentalFormService
+      private rentalFormService: RentalFormService,
+      private authService: AuthService
   ) {
+    this.authService.$loginStatus.subscribe((res: any) => {
+      this.isLoggedIn = res;
+    });
   }
 
   ngOnInit() {

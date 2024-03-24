@@ -1,0 +1,343 @@
+<div class="container">
+    <form [formGroup]="addCarForm" class="two-column-form">
+        <div class="form-group geo-primary-txt">
+            <label>
+                მანქანის ბრენდი
+            </label>
+            <input type="text" formControlName="brand" class="form-control">
+            <div *ngIf="brand?.errors?.['required'] && brand?.touched" class="geo-primary-txt text-danger">
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+
+        <div class="form-group geo-primary-txt">
+            <label>
+                მანქანის მოდელი
+            </label>
+            <input type="text" formControlName="model" class="form-control">
+            <div *ngIf="model?.errors?.['required'] && model?.touched" class="geo-primary-txt text-danger">
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                მანქანის ნომერი
+            </label>
+            <input type="text" formControlName="licensePlate" class="form-control" placeholder="AA-111-AA">
+            <div *ngIf="licensePlate?.errors?.['required'] && licensePlate?.touched" class="geo-primary-txt text-danger">
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                გამოშვების წელი
+            </label>
+            <input type="number" formControlName="year" class="form-control">
+            <div *ngIf="year?.errors?.['required'] && year?.touched" class="geo-primary-txt text-danger">
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                ფერი
+            </label>
+            <select formControlName="bodyColor" class="form-control">
+                <option *ngFor="let color of bodyColor">
+                    {{color}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                კუზაო
+            </label>
+            <select formControlName="bodyType" class="form-control">
+                <option *ngFor="let bodyType of bodyType">
+                    {{bodyType}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                ლიმიტი ;დ
+            </label>
+            <input type="number" formControlName="limit" class="form-control">
+            <div *ngIf="limit?.errors?.['required'] && limit?.touched" class="geo-primary-txt text-danger">
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                overageFee
+            </label>
+            <input type="number" formControlName="overageFee" class="form-control">
+            <div *ngIf="overageFee?.errors?.['required'] && overageFee?.touched" class="geo-primary-txt text-danger">
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+        <div class="geo-primary-txt form-group checkbox">
+            <input type="checkbox" formControlName="radio" >
+            <label >
+                რადიო
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group checkbox">
+            <input type="checkbox" formControlName="aux" >
+            <label >
+                აუქსი
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group checkbox">
+            <input type="checkbox" formControlName="bluetooth" >
+            <label >
+                ბლუთუზი
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group checkbox">
+            <input type="checkbox" formControlName="audio_cd" >
+            <label >
+                აუდიო CD
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group checkbox">
+            <input type="checkbox" formControlName="usb" >
+            <label >
+                USB
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group checkbox">
+            <input type="checkbox" formControlName="mp3" >
+            <label >
+                MP3
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group checkbox">
+            <input type="checkbox" formControlName="franchise" >
+            <label >
+                ფრენჩაიზი
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group">
+            <label >
+                ფრენჩაიზის საფასური
+            </label>
+            <input type="number" formControlName="franchiseAmount" class="form-control">
+        </div>
+        <div class="geo-primary-txt form-group  checkbox">
+            <input type="checkbox" formControlName="deposit" >
+            <label >
+                დეპოზიტი
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group">
+            <label >
+                დეპოზიტის ღირებულება
+            </label>
+            <input type="number" formControlName="depositAmount" class="form-control" >
+        </div>
+        <div class="geo-primary-txt form-group">
+            <label >
+                ძრავის მოცულობა
+            </label>
+            <input type="number" formControlName="engineType" class="form-control">
+            <div *ngIf="engineType?.errors?.['required'] && engineType?.touched" class="geo-primary-txt text-danger">
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+        <div class="geo-primary-txt form-group">
+            <label >
+                ცხენის ძალა
+            </label>
+            <input type="number" formControlName="horsepower" class="form-control">
+            <div *ngIf="horsepower?.errors?.['required'] && horsepower?.touched" class="geo-primary-txt text-danger">
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                საწვავის ტიპი
+            </label>
+            <select class="form-control" formControlName="fuel">
+                <option>
+                    Benzin :D
+                </option>
+                <option>
+                    Diesel
+                </option>
+                <option>
+                    Hybrid
+                </option>
+            </select>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                საწვავის ავზის მოცულობა
+            </label>
+            <input type="number" formControlName="tankCapacity" class="form-control">
+            <div *ngIf="tankCapacity?.errors?.['required'] && tankCapacity?.touched" class="geo-primary-txt text-danger">
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                წვა
+            </label>
+            <input type="number" formControlName="fuelConsumption" class="form-control">
+            <div *ngIf="fuelConsumption?.errors?.['required'] && fuelConsumption?.touched" class="geo-primary-txt text-danger">
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                გადაცემათა კოლოფი
+            </label>
+            <select class="form-control" formControlName="transmission">
+                <option *ngFor="let transmission of transmission">
+                    {{transmission}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                drive?
+            </label>
+            <select class="form-control" formControlName="drive">
+                <option *ngFor="let drive of drive">
+                    {{drive}}
+                </option>
+            </select>
+        </div>
+        <div class="geo-primary-txt form-group  checkbox">
+            <input type="checkbox" formControlName="abs" >
+            <label >
+                ABS
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group  checkbox">
+            <input type="checkbox" formControlName="ebd" >
+            <label >
+                EBD
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group  checkbox">
+            <input type="checkbox" formControlName="esp" >
+            <label >
+                ESP
+            </label>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                მართვის მოწმობის კატეგორია
+            </label>
+            <select class="form-control" formControlName="requiredLicense">
+                <option *ngFor="let license of requiredLicense">
+                    {{license}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                სკამების რაოდენობა
+            </label>
+            <input type="number" formControlName="seats" class="form-control">
+            <div *ngIf="seats?.errors?.['required'] && seats?.touched" class="geo-primary-txt text-danger">
+                ეს ველი სავალდებულოა
+            </div>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                კარების რაოდენობა
+            </label>
+            <select class="form-control" formControlName="drive">
+                <option *ngFor="let doors of doors">
+                    {{doors}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                კლიმატ კონტროლი
+            </label>
+            <select class="form-control" formControlName="airConditioning">
+                <option *ngFor="let airConditioning of airConditioning">
+                    {{airConditioning}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                ინტერიერი
+            </label>
+            <select class="form-control" formControlName="interior">
+                <option *ngFor="let interior of interior">
+                    {{interior}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                ჭერი
+            </label>
+            <select class="form-control" formControlName="roof">
+                <option *ngFor="let roof of roof">
+                    {{roof}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                ელექტრო შუშები
+            </label>
+            <select class="form-control" formControlName="poweredWindows">
+                <option *ngFor="let window of poweredWindows">
+                    {{window}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                ეარბეგი
+            </label>
+            <select class="form-control" formControlName="airbags">
+                <option *ngFor="let airbag of airbags">
+                    {{airbag}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group geo-primary-txt">
+            <label>
+                საჭე
+            </label>
+            <select class="form-control" formControlName="sideWheel">
+                <option *ngFor="let sideWheel of sideWheel">
+                    {{sideWheel}}
+                </option>
+            </select>
+        </div>
+        <div class="geo-primary-txt form-group  checkbox">
+            <input type="checkbox" formControlName="cruiseControl" >
+            <label >
+                კრუიზ კონტროლი
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group  checkbox">
+            <input type="checkbox" formControlName="rearViewCamera" >
+            <label >
+                ახლო ხედვის კამერა
+            </label>
+        </div>
+        <div class="geo-primary-txt form-group  checkbox">
+            <input type="checkbox" formControlName="parkingAssist" >
+            <label >
+                პარკინგის სენსორი
+            </label>
+        </div>
+        <button
+                type="submit"
+                (click)="onSubmit()"
+                class="geo-primary-txt"
+                [disabled]="!addCarForm.valid"
+                [class.disabled]="!addCarForm.valid"
+        >მანქანის დამატება</button>
+    </form>
+</div>
