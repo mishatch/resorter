@@ -16,6 +16,12 @@
   border: none;
 }
 .card {
+  align-items: center;
+  width: 100% !important;
+  >img {
+    width: 100%;
+    max-width: 250px;
+  }
   button {
     background-color: $card-bg;
     color: $txt-dark;

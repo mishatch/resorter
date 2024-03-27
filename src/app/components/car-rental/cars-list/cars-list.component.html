@@ -1,13 +1,13 @@
 <div class="list-container">
     <div *ngIf="isLoading" class="loading-animation">
-        <div class="spinner">
-        </div>
+        <div class="spinner"></div>
         <p>Loading...</p>
     </div>
     <app-filter class="filter"></app-filter>
     <div class="wrapper">
-        @for(car of cars; track car.name){
+        @for(car of cars.slice(startIndex, endIndex + 1); track car.name){
         <app-car-card
+        class="car-card"
         [image]="car.image.images[0]"
         [name]="car.brand"
         [price]="car.price"
@@ -38,6 +38,13 @@
         >
         </app-car-card>
         }
-    </div>
     <div *ngIf="noCarsFound" class="geo-primary-txt no-cars">მანქანები არ მოიძებნა</div>
 </div>
+    <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 1" class="geo-primary-txt btn">წინა</button>
+        <span *ngFor="let pageNum of totalPages"
+              (click)="goToPage(pageNum)"
+              [class.active]="pageNum === currentPage"
+              [class.underline]="pageNum === currentPage">{{ pageNum }}</span>
+        <button (click)="nextPage()" [disabled]="(currentPage * itemsPerPage) >= cars.length" class="geo-primary-txt btn">შემდეგი</button>
+    </div>

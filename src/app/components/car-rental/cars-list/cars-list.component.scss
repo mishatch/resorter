@@ -1,9 +1,12 @@
+@import "../../../../palette";
 .wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
     margin-bottom: 20px;
+    padding: 0 10px;
+
     .list-container {
         display: flex;
         margin-bottom: 20px;
@@ -26,4 +29,52 @@
     align-items: center;
     height: 50vh;
     width: 100%;
+}
+.pagination {
+    margin: 0 auto;
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px;
+    span {
+        cursor: pointer;
+        margin: 0 5px;
+        padding: 3px 5px;
+        border-radius: 3px;
+    }
+
+    span.active {
+        font-weight: bold;
+    }
+
+    span.underline {
+        text-decoration: underline;
+    }
+    >button {
+        background-color: $card-bg;
+        color: $txt-dark;
+        font-size: 15px;
+        width: 100px;
+        padding: 10px 0;
+        border: none;
+    }
+}
+.car-card {
+    width: 100%;
+}
+@media screen and (min-width: 520px) {
+    .car-card {
+        width: 48%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .car-card {
+        width: 32%;
+    }
+}
+@media screen and (min-width: 1920px) {
+    .car-card {
+        width: 24%;
+    }
 }

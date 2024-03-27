@@ -21,22 +21,26 @@ export class AddCarComponent implements OnInit {
   roof!: string[];
   sideWheel!: string[];
   transmission!: string[];
+  tariffs!: any;
+  seasons!: any;
 
   constructor(private fb: FormBuilder, private carsService: CarsService) {
     this.carsService.getCarOptions().subscribe((res) => {
         console.log(res);
-        this.airConditioning = res.airConditioning;
-        this.airbags = res.airbags;
-        this.bodyColor = res.bodyColor;
-        this.bodyType = res.bodyType;
-        this.doors = res.doors;
-        this.drive = res.drive;
-        this.interior = res.interior;
-        this.poweredWindows = res.poweredWindows;
-        this.requiredLicense = res.requiredLicense;
-        this.roof = res.roof;
-        this.sideWheel = res.sideWheel;
-        this.transmission = res.transmission;
+        this.airConditioning = res.select_fields.airConditioning;
+        this.airbags = res.select_fields.airbags;
+        this.bodyColor = res.select_fields.bodyColor;
+        this.bodyType = res.select_fields.bodyType;
+        this.doors = res.select_fields.doors;
+        this.drive = res.select_fields.drive;
+        this.interior = res.select_fields.interior;
+        this.poweredWindows = res.select_fields.poweredWindows;
+        this.requiredLicense = res.select_fields.requiredLicense;
+        this.roof = res.select_fields.roof;
+        this.sideWheel = res.select_fields.sideWheel;
+        this.transmission = res.select_fields.transmission;
+        this.tariffs = res.tariffs;
+        this.seasons = res.seasons;
     });
   }
   ngOnInit() {

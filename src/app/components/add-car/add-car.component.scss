@@ -29,6 +29,10 @@ button {
   cursor: not-allowed;
   opacity: 0.5;
 }
+.table-div {
+  overflow-x: auto;
+  width: 100%;
+}
 @media screen and (min-width: 768px) {
   form {
     display: flex;

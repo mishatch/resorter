@@ -30,7 +30,7 @@ export class CarsService {
     }
   }
 getCarOptions(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/forms/car`);
+    return this.http.get<any>(`${this.apiUrl}/manage-car/1`);
   }
 
 }

@@ -82,7 +82,5 @@ export class LoginComponent implements OnInit {
     this.registration = false;
   }
 
-  log(x: any) {
-    console.log(x);
-  }
+
 }
