@@ -59,11 +59,12 @@ export class CarsListComponent implements OnInit {
         endPage = totalPages;
       } else {
         startPage = this.currentPage - halfPagesToShow;
-        endPage = this.currentPage + halfPagesToShow;
+        endPage = this.currentPage + halfPagesToShow; // Adjusted to display correct end page
       }
     }
     this.totalPages = Array(endPage - startPage + 1).fill(0).map((x, i) => startPage + i);
   }
+
 
   get startIndex(): number {
     return (this.currentPage - 1) * this.itemsPerPage;
@@ -89,7 +90,7 @@ export class CarsListComponent implements OnInit {
   }
 
   goToPage(page: number) {
-    if (page >= 1 && page <= this.totalPages.length) {
+    if (page >= 1 ) {
       this.currentPage = page;
       this.calculateTotalPages();
     }
