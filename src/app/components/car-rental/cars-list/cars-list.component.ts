@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import { CarsService } from "../../../modules/core/services/cars.service";
 import { Filter } from "../../../models/filter.model";
 import { FilterDataService } from '../../../modules/core/services/filter-data.service';
@@ -19,7 +19,8 @@ export class CarsListComponent implements OnInit {
 
   constructor(
       private carsService: CarsService,
-      private filterDataService: FilterDataService
+      private filterDataService: FilterDataService,
+      private elementRef: ElementRef
   ) {}
 
   ngOnInit() {
@@ -76,6 +77,7 @@ export class CarsListComponent implements OnInit {
       this.currentPage++;
       this.calculateTotalPages();
     }
+    this.scrollToTop();
   }
 
   prevPage() {
@@ -83,6 +85,7 @@ export class CarsListComponent implements OnInit {
       this.currentPage--;
       this.calculateTotalPages();
     }
+    this.scrollToTop();
   }
 
   goToPage(page: number) {
@@ -90,5 +93,13 @@ export class CarsListComponent implements OnInit {
       this.currentPage = page;
       this.calculateTotalPages();
     }
+    this.scrollToTop();
+  }
+  private scrollToTop() {
+    // Scroll to top of the page
+    this.elementRef.nativeElement.ownerDocument.defaultView.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 }
