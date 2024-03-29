@@ -7,7 +7,7 @@ import {BehaviorSubject, tap} from "rxjs";
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = "http://157.230.100.130/";
+  private apiUrl = "https://api.resorter.ge";
   public $loginStatus = new BehaviorSubject<boolean>(this.isLoggedIn());
 
   constructor(private http: HttpClient) { }

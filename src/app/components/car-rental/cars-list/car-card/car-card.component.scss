@@ -18,9 +18,12 @@
 .card {
   align-items: center;
   width: 100% !important;
+  height: 348px;
   >img {
     width: 100%;
     max-width: 250px;
+    object-fit: cover;
+    max-height: 150px;
   }
   button {
     background-color: $card-bg;

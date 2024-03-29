@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ResorterServicesService {
-  private apiUrl = "http://157.230.100.130/";
+  private apiUrl = "https://api.resorter.ge";
 
   constructor(private http: HttpClient) { }
 
