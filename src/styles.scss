@@ -47,7 +47,7 @@
         opacity: 0.7;
     }
     >img:nth-child(1) {
-        animation: revealFromBottom 1.5s;
+        animation: revealFromBottom 2s;
 
     }
 }
@@ -71,7 +71,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 1s ease-out;
+    transition: opacity 1.5s ease-out;
     opacity: 1;
 }
 

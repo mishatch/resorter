@@ -14,7 +14,7 @@ export class ResorterServicesComponent implements OnInit {
     constructor(private services: ResorterServicesService) { }
 
     ngOnInit(): void {
-        const minLoadingTime = 1000;
+        const minLoadingTime = 1500;
         const startTime = Date.now();
 
         this.services.getServices().subscribe((data: any) => {
@@ -39,7 +39,7 @@ export class ResorterServicesComponent implements OnInit {
         this.isFadingOut = true;
         setTimeout(() => {
             this.isLoading = false;
-        }, 1000);
+        }, 1500);
     }
 
 
