@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResorterServicesService } from "../../../modules/core/services/resorter-services.service";
+import {ResorterServices} from "../../../models/services.model";
 
 @Component({
     selector: 'app-resorter-services',
@@ -7,7 +8,7 @@ import { ResorterServicesService } from "../../../modules/core/services/resorter
     styleUrls: ['./resorter-services.component.scss']
 })
 export class ResorterServicesComponent implements OnInit {
-    resorterServices: any[] = [];
+    resorterServices: ResorterServices[] = [];
     isLoading: boolean = true;
     constructor(private services: ResorterServicesService) { }
 

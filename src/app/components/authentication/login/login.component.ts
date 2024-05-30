@@ -3,6 +3,7 @@ import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../../modules/core/services/auth.service";
 import { georgianPhoneNumberValidator } from "../../../modules/core/validators/georgian-phone.validator";
+import {LoginRes} from "../../../models/auth.mode";
 
 @Component({
   selector: 'app-login',
@@ -54,7 +55,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
-      this.authService.login(this.loginForm.value).subscribe((res: any) => {
+      this.authService.login(this.loginForm.value).subscribe((res: LoginRes) => {
         this.submitClicked = true;
         if (res.Error) {
           this.responseError = true;
@@ -68,6 +69,7 @@ export class LoginComponent implements OnInit {
   onRegistrationSubmit() {
     if (this.registrationForm.valid) {
       this.authService.registration(this.registrationForm.value).subscribe((res: any) => {
+        console.log(res);
         this.submitClicked = true;
         this.responseError = !!res.Error;
       });

@@ -5,7 +5,7 @@
     </div>
     <app-filter class="filter"></app-filter>
     <div class="wrapper">
-        @for(car of cars.slice(startIndex, endIndex + 1); track car.name){
+        @for(car of cars.slice(startIndex, endIndex + 1); track car.brand){
         <app-car-card
         class="car-card"
         [image]="car.image.images[0]"

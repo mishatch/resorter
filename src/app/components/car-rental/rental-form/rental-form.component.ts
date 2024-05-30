@@ -59,7 +59,4 @@ export class RentalFormComponent {
     get takeTime() {
         return this.rentalForm.get('takeTime');
     }
-    log(x: any){
-        console.log(x);
-    }
 }

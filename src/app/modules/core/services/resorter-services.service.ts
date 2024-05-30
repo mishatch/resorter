@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ResorterServicesService {
-  private apiUrl = "https://api.resorter.ge";
+  private apiUrl = "https://hammerhead-app-25bv9.ondigitalocean.app/";
 
   constructor(private http: HttpClient) { }
 

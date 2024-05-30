@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CarsService} from "../../modules/core/services/cars.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {plateNumFormatValidator} from "./plateNumFormat-validator";
+import {Tariff} from "../../models/tariff.model";
+import {Season} from "../../models/season.model";
 
 @Component({
   selector: 'app-add-car',
@@ -21,12 +24,11 @@ export class AddCarComponent implements OnInit {
   roof!: string[];
   sideWheel!: string[];
   transmission!: string[];
-  tariffs!: any;
-  seasons!: any;
+  tariffs!: Tariff[];
+  seasons!: Season[];
 
   constructor(private fb: FormBuilder, private carsService: CarsService) {
     this.carsService.getCarOptions().subscribe((res) => {
-        console.log(res);
         this.airConditioning = res.select_fields.airConditioning;
         this.airbags = res.select_fields.airbags;
         this.bodyColor = res.select_fields.bodyColor;
@@ -47,7 +49,7 @@ export class AddCarComponent implements OnInit {
     this.addCarForm = this.fb.group({
       brand: ['', [Validators.required]],
       model: ['', Validators.required],
-      licensePlate: ['', Validators.required],
+      licensePlate: ['', [Validators.required, plateNumFormatValidator()]],
       year: [2000, Validators.required],
       bodyColor: ['White'],
       bodyType: ['Sedan'],
@@ -65,7 +67,7 @@ export class AddCarComponent implements OnInit {
       depositAmount: [''],
       engineType: ['', Validators.required],
       horsepower: ['', Validators.required],
-      fuel: ['', Validators.required],
+      fuel: ['Diesel', Validators.required],
       tankCapacity: ['', Validators.required],
       fuelConsumption: ['', Validators.required],
       transmission: ['Manual', Validators.required],
@@ -87,20 +89,13 @@ export class AddCarComponent implements OnInit {
       parkingAssist: [false],
 
     });
+      this.addCarForm.get('licensePlate')?.valueChanges.subscribe(value => {
+          this.addCarForm.get('licensePlate')?.setValue(value.toUpperCase(), { emitEvent: false });
+      });
   }
+
   onSubmit() {
     console.log(this.addCarForm.value);
-
-    const formErrors: {[key: string]: any} = {};
-
-    Object.keys(this.addCarForm.controls).forEach(key => {
-      const controlErrors = this.addCarForm.get(key)?.errors;
-      if (controlErrors != null) {
-        formErrors[key] = controlErrors;
-      }
-    });
-
-    console.log('Form errors:', formErrors);
   }
  get brand() {
     return this.addCarForm.get('brand');

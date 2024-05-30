@@ -9,7 +9,7 @@ export class RentalFormService {
   private startDate: string = this.getCurrentDate();
   private endDate: string = this.getCurrentDate();
   private carIdSubject = new BehaviorSubject<string | undefined>(undefined);
-  private apiUrl = 'https://api.resorter.ge';
+  private apiUrl = 'https://hammerhead-app-25bv9.ondigitalocean.app/';
   carId$ = this.carIdSubject.asObservable();
 
   constructor(private http: HttpClient) {}

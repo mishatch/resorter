@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {Car} from "../../../models/carInfo.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarsService {
-  private apiUrl = 'https://api.resorter.ge';
+  private apiUrl = 'https://hammerhead-app-25bv9.ondigitalocean.app/';
 
   constructor(private http: HttpClient) { }
 
@@ -24,9 +25,9 @@ export class CarsService {
           }
         }
       });
-      return this.http.get<any>(`${this.apiUrl}/filter/cars`, { params });
+      return this.http.get<Car>(`${this.apiUrl}/filter/cars`, { params });
     }else{
-      return this.http.get<any>(`${this.apiUrl}/filter/cars`);
+      return this.http.get<Car>(`${this.apiUrl}/filter/cars`);
     }
   }
 getCarOptions(): Observable<any> {

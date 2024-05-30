@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit} from '@angular/core';
 import { CarsService } from "../../../modules/core/services/cars.service";
 import { Filter } from "../../../models/filter.model";
 import { FilterDataService } from '../../../modules/core/services/filter-data.service';
+import {Car} from "../../../models/carInfo.model";
 
 @Component({
   selector: 'app-cars-list',
@@ -9,7 +10,7 @@ import { FilterDataService } from '../../../modules/core/services/filter-data.se
   styleUrls: ['./cars-list.component.scss']
 })
 export class CarsListComponent implements OnInit {
-  cars: any;
+  cars: Array<Car> = [];
   filterData!: Filter;
   noCarsFound = false;
   isLoading = true;
@@ -31,7 +32,10 @@ export class CarsListComponent implements OnInit {
   }
 
   getCars(filterData: Filter) {
-    this.carsService.getCars(filterData).subscribe((data: any) => {
+    this.carsService.getCars(filterData).subscribe((data: {
+        cars: Array<Car>
+    }) => {
+      console.log(data.cars)
       this.cars = data.cars;
       this.noCarsFound = this.cars.length === 0;
       this.isLoading = false;

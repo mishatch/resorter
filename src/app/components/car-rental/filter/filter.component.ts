@@ -29,7 +29,7 @@ export class FilterComponent {
       private rentalFormService: RentalFormService,
       private authService: AuthService
   ) {
-    this.authService.$loginStatus.subscribe((res: any) => {
+    this.authService.$loginStatus.subscribe((res: boolean) => {
       this.isLoggedIn = res;
     });
   }

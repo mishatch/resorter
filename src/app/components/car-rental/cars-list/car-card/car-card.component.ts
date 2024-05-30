@@ -11,7 +11,7 @@ export class CarCardComponent implements OnInit {
   @Input() image!: string;
   @Input() name!: string;
   @Input() price!: number;
-  @Input() allImages!: any;
+  @Input() allImages!: string[];
   @Input() gearbox!: string;
   @Input() engine!: string;
   @Input() model!: string;
