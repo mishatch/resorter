@@ -10,15 +10,38 @@ import {ResorterServices} from "../../../models/services.model";
 export class ResorterServicesComponent implements OnInit {
     resorterServices: ResorterServices[] = [];
     isLoading: boolean = true;
+    isFadingOut: boolean = false;
     constructor(private services: ResorterServicesService) { }
 
     ngOnInit(): void {
+        const minLoadingTime = 1000;
+        const startTime = Date.now();
+
         this.services.getServices().subscribe((data: any) => {
-            this.isLoading = false;
-            this.resorterServices = data.services;
-            this.toggleScroll();
+            const elapsedTime = Date.now() - startTime;
+            const remainingTime = minLoadingTime - elapsedTime;
+
+            if (remainingTime > 0) {
+                setTimeout(() => {
+                    this.startFadeOut();
+                    this.resorterServices = data.services;
+                    this.toggleScroll();
+                }, remainingTime);
+            } else {
+                this.startFadeOut();
+                this.resorterServices = data.services;
+                this.toggleScroll();
+            }
         });
     }
+
+    startFadeOut(): void {
+        this.isFadingOut = true;
+        setTimeout(() => {
+            this.isLoading = false;
+        }, 1000);
+    }
+
 
     toggleScroll(): void {
         if (this.isLoading) {
