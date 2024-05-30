@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResorterServicesService } from "../../../modules/core/services/resorter-services.service";
-import {ResorterServices} from "../../../models/services.model";
+import { ResorterServices } from "../../../models/services.model";
 
 @Component({
     selector: 'app-resorter-services',
@@ -11,6 +11,7 @@ export class ResorterServicesComponent implements OnInit {
     resorterServices: ResorterServices[] = [];
     isLoading: boolean = true;
     isFadingOut: boolean = false;
+
     constructor(private services: ResorterServicesService) { }
 
     ngOnInit(): void {
@@ -25,12 +26,10 @@ export class ResorterServicesComponent implements OnInit {
                 setTimeout(() => {
                     this.startFadeOut();
                     this.resorterServices = data.services;
-                    this.toggleScroll();
                 }, remainingTime);
             } else {
                 this.startFadeOut();
                 this.resorterServices = data.services;
-                this.toggleScroll();
             }
         });
     }
@@ -39,9 +38,9 @@ export class ResorterServicesComponent implements OnInit {
         this.isFadingOut = true;
         setTimeout(() => {
             this.isLoading = false;
+            this.toggleScroll();
         }, 1500);
     }
-
 
     toggleScroll(): void {
         if (this.isLoading) {
