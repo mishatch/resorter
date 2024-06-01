@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResorterServicesService } from "../../../modules/core/services/resorter-services.service";
 import { ResorterServices } from "../../../models/services.model";
+import { LoadingService } from '../../../modules/core/services/loading.service';
 
 @Component({
     selector: 'app-resorter-services',
@@ -9,12 +10,15 @@ import { ResorterServices } from "../../../models/services.model";
 })
 export class ResorterServicesComponent implements OnInit {
     resorterServices: ResorterServices[] = [];
-    isLoading: boolean = true;
-    isFadingOut: boolean = false;
 
-    constructor(private services: ResorterServicesService) { }
+    constructor(
+        private services: ResorterServicesService,
+        private loadingService: LoadingService
+    ) { }
 
     ngOnInit(): void {
+        this.loadingService.setLoading(true);
+
         const minLoadingTime = 1500;
         const startTime = Date.now();
 
@@ -24,29 +28,13 @@ export class ResorterServicesComponent implements OnInit {
 
             if (remainingTime > 0) {
                 setTimeout(() => {
-                    this.startFadeOut();
                     this.resorterServices = data.services;
+                    this.loadingService.setDataLoaded(true);
                 }, remainingTime);
             } else {
-                this.startFadeOut();
                 this.resorterServices = data.services;
+                this.loadingService.setDataLoaded(true);
             }
         });
-    }
-
-    startFadeOut(): void {
-        this.isFadingOut = true;
-        setTimeout(() => {
-            this.isLoading = false;
-            this.toggleScroll();
-        }, 1500);
-    }
-
-    toggleScroll(): void {
-        if (this.isLoading) {
-            document.body.classList.add('disable-scroll');
-        } else {
-            document.body.classList.remove('disable-scroll');
-        }
     }
 }
